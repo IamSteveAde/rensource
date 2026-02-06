@@ -74,7 +74,7 @@ export default function Header() {
               <Image
                 src="/images/logo/elogo.png"
                 alt="Europe Dental Clinic"
-                width={160}
+                width={60}
                 height={32}
                 priority
                 className="object-contain"

@@ -24,12 +24,13 @@ export default function Footer() {
             {/* ================= BRAND ================= */}
             <div className="lg:col-span-4 space-y-6">
               <Image
-                src="/images/logo/elogo.png"
-                alt="Europe Dental Clinic"
-                width={170}
-                height={36}
-                className="object-contain"
-              />
+              src="/images/logo/elogo.png"
+              alt="Europe Dental Clinic"
+              width={60}
+              height={36}
+              className="object-contain brightness-0 invert"
+            />
+
 
               <p className="text-white/70 text-sm leading-relaxed max-w-sm">
                 Europe Dental Clinic is a premium, patient-focused dental clinic
