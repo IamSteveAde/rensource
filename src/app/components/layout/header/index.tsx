@@ -72,7 +72,7 @@ export default function Header() {
             {/* LOGO */}
             <Link href="/" className="z-50 flex items-center">
               <Image
-                src="/images/logo/edc.svg"
+                src="/images/logo/elogo.png"
                 alt="Europe Dental Clinic"
                 width={160}
                 height={32}

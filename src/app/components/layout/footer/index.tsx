@@ -24,7 +24,7 @@ export default function Footer() {
             {/* ================= BRAND ================= */}
             <div className="lg:col-span-4 space-y-6">
               <Image
-                src="/images/logo/edc.svg"
+                src="/images/logo/elogo.png"
                 alt="Europe Dental Clinic"
                 width={170}
                 height={36}
