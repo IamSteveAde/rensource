@@ -107,7 +107,7 @@ export default function AboutPage() {
 <div className="relative h-[420px] rounded-3xl overflow-hidden shadow-xl">
 
 <Image
-src="/images/hero/h5.webp"
+src="/images/hero/i13.jpg"
 fill
 alt="Solar farm infrastructure"
 className="object-cover"
