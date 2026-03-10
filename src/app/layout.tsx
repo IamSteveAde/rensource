@@ -4,7 +4,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "next-themes";
 import NextTopLoader from "nextjs-toploader";
-import Preloader from "./components/preloader"
+
 
 import { AppContextProvider } from "../context-api/PropertyContext";
 
@@ -50,7 +50,7 @@ export default function RootLayout({
           >
             <Aoscompo>
               <Header />
-              <Preloader />
+              
               <NextTopLoader />
               {children}
               <Footer />
