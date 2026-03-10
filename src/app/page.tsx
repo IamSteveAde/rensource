@@ -9,6 +9,7 @@ import Testimonials from "./components/home/testimonial";
 import History from "./components/home/history";
 import Calculator from "./components/home/calculator";
 import Info from "./components/home/info";
+import Insight from "./components/home/insights";
 
 
 
@@ -104,6 +105,7 @@ export default function Home() {
       {/* Company journey, capability & infrastructure */}
       <History />
       <Calculator />
+      <Insight />
       <Info />
       
     </main>

@@ -4,15 +4,14 @@ import "./globals.css";
 
 import { ThemeProvider } from "next-themes";
 import NextTopLoader from "nextjs-toploader";
-
+import Script from "next/script";
 
 import { AppContextProvider } from "../context-api/PropertyContext";
 
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
-import ScrollToTop from "./components/scroll-to-top";
-import Aoscompo from "@/utils/aos";
 
+import Aoscompo from "@/utils/aos";
 
 /* -------------------------------------
    FONT
@@ -50,16 +49,48 @@ export default function RootLayout({
           >
             <Aoscompo>
               <Header />
-              
+
               <NextTopLoader />
               {children}
+
               <Footer />
+          
             </Aoscompo>
 
-            
+            {/* Global Chatbase Chat Widget */}
+            <Script id="chatbase-widget" strategy="afterInteractive">
+              {`
+                (function(){
+                  if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+                    window.chatbase=(...arguments)=>{
+                      if(!window.chatbase.q){window.chatbase.q=[]}
+                      window.chatbase.q.push(arguments)
+                    };
+                    window.chatbase=new Proxy(window.chatbase,{
+                      get(target,prop){
+                        if(prop==="q"){return target.q}
+                        return(...args)=>target(prop,...args)
+                      }
+                    })
+                  }
 
-            {/* Global Chat Widget */}
-            
+                  const onLoad=function(){
+                    const script=document.createElement("script");
+                    script.src="https://www.chatbase.co/embed.min.js";
+                    script.id="VBniTIj_QRnpWFyTRSZeX";
+                    script.domain="www.chatbase.co";
+                    document.body.appendChild(script);
+                  };
+
+                  if(document.readyState==="complete"){
+                    onLoad();
+                  } else {
+                    window.addEventListener("load", onLoad);
+                  }
+                })();
+              `}
+            </Script>
+
           </ThemeProvider>
         </AppContextProvider>
       </body>

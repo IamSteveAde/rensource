@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Board from "../components/home/calculator"
 import { motion } from "framer-motion"
 import {
   Sun,
@@ -356,91 +357,7 @@ className={`p-10 rounded-2xl border border-white/10 backdrop-blur bg-gradient-to
 
 
       {/* LEADERSHIP */}
-
-      <section className="py-32 bg-gradient-to-b from-[#F5F0E8] via-white to-white">
-
-        <div className="max-w-7xl mx-auto px-6">
-
-          <div className="text-center mb-20">
-
-            <h2 className="text-4xl font-bold text-[#1A2B4C]">
-              Leadership Team
-            </h2>
-
-            <p className="text-gray-600 mt-4">
-              Experienced leaders shaping Africa's renewable energy future.
-            </p>
-
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-
-            {[
-              {
-                name:"CEO Name",
-                role:"Chief Executive Officer",
-                img:"/images/team/1.jpg"
-              },
-              {
-                name:"COO Name",
-                role:"Chief Operations Officer",
-                img:"/images/team/2.jpg"
-              },
-              {
-                name:"CTO Name",
-                role:"Chief Technology Officer",
-                img:"/images/team/3.jpg"
-              },
-              {
-                name:"CFO Name",
-                role:"Chief Financial Officer",
-                img:"/images/team/4.jpg"
-              },
-            ].map((person,index)=>(
-
-              <motion.div
-              key={index}
-              whileHover={{y:-8}}
-              className="group rounded-2xl overflow-hidden shadow-xl bg-white"
-              >
-
-                <div className="relative h-[320px]">
-
-                  <Image
-                  src={person.img}
-                  fill
-                  alt={person.name}
-                  className="object-cover group-hover:scale-105 transition duration-500"
-                  />
-
-                </div>
-
-                <div className="p-6">
-
-                  <h3 className="font-semibold text-lg text-[#1A2B4C]">
-                    {person.name}
-                  </h3>
-
-                  <p className="text-sm text-gray-500">
-                    {person.role}
-                  </p>
-
-                </div>
-
-              </motion.div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* CTA */}
-
-      
+<Board/>      
     </main>
   )
 }
