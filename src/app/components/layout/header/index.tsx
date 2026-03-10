@@ -131,7 +131,7 @@ export default function Header() {
  hover:shadow-xl
  `}
 >
- Request Energy Assessment
+ Energy Assessment
 </button>
 
               {/* MOBILE MENU BUTTON */}
@@ -208,7 +208,7 @@ export default function Header() {
         shadow-xl
       "
     >
-      Request Energy Assessment
+      Energy Assessment
     </button>
 
   </div>
