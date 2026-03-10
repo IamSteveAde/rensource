@@ -18,53 +18,56 @@ import Info from "./components/home/info";
 /* -------------------------------------
    METADATA — EUROPE DENTAL CLINIC
 ------------------------------------- */
+
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://europedentalclinic.com"),
+  metadataBase: new URL("https://rensource.energy"),
 
   title: {
-    default: "Europe Dental Clinic",
-    template: "%s | Europe Dental Clinic",
+    default: "RenSource Energy",
+    template: "%s | RenSource Energy",
   },
 
   description:
-    "Europe Dental Clinic is a premium dental clinic in Nigeria delivering world-class oral healthcare using European standards, advanced technology, and compassionate specialists. A subsidiary of Equity Health Group Nigeria.",
+    "RenSource Energy is Africa’s commercial and industrial energy partner delivering solar, hybrid, and fully financed power solutions to businesses. Proven in Nigeria and expanding across Africa.",
 
   keywords: [
-    "Europe Dental Clinic",
-    "dental clinic Nigeria",
-    "dentist in Nigeria",
-    "cosmetic dentistry Nigeria",
-    "dental implants Nigeria",
-    "orthodontics Nigeria",
-    "pediatric dentistry Nigeria",
-    "European standard dental care",
-    "Equity Health Group Nigeria",
-    "world class dental clinic",
+    "RenSource Energy",
+    "solar energy Nigeria",
+    "commercial solar Nigeria",
+    "industrial solar Africa",
+    "solar PPA Africa",
+    "hybrid power systems Africa",
+    "solar + BESS Nigeria",
+    "energy solutions for businesses",
+    "renewable energy Africa",
+    "diesel replacement energy Nigeria",
+    "commercial energy solutions Africa",
   ],
 
   openGraph: {
-    title: "Europe Dental Clinic",
+    title: "RenSource Energy",
     description:
-      "World-class dental care delivered with European standards, advanced technology, and trusted Nigerian expertise.",
-    url: "https://europedentalclinic.com",
-    siteName: "Europe Dental Clinic",
+      "Powering African industry with reliable solar, hybrid, and fully financed energy solutions. Proven in Nigeria. Ready for Africa.",
+    url: "https://rensource.energy",
+    siteName: "RenSource Energy",
     type: "website",
     images: [
       {
-        url: "https://europedentalclinic.com/og/og-cover.jpg",
+        url: "https://rensource.energy/og/og-cover.jpg",
         width: 1200,
         height: 630,
-        alt: "Europe Dental Clinic — World-Class Dental Care",
+        alt: "RenSource Energy — Powering African Industry",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Europe Dental Clinic",
+    title: "RenSource Energy",
     description:
-      "Premium dental care using European standards and advanced technology. Trusted. Safe. Patient-focused.",
-    images: ["https://europedentalclinic.com/og/og-cover.jpg"],
+      "Reliable solar, hybrid, and financed power solutions for African businesses.",
+    images: ["https://rensource.energy/og/og-cover.jpg"],
   },
 
   robots: {
@@ -73,10 +76,9 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://europedentalclinic.com",
+    canonical: "https://rensource.energy",
   },
 };
-
 /* -------------------------------------
    HOME PAGE
 ------------------------------------- */

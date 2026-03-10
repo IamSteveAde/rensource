@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "next-themes";
 import NextTopLoader from "nextjs-toploader";
+import Preloader from "./components/preloader"
 
 import { AppContextProvider } from "../context-api/PropertyContext";
 
@@ -23,11 +24,11 @@ const dmsans = DM_Sans({ subsets: ["latin"] });
 ------------------------------------- */
 export const metadata: Metadata = {
   title: {
-    default: "Europe Dental Clinic",
-    template: "%s | Europe Dental Clinic",
+    default: "Rensource Energy",
+    template: "%s | Rensource Energy",
   },
   description:
-    "Europe Dental Clinic is a premium dental clinic in Nigeria delivering world-class oral healthcare using European standards, advanced technology, and compassionate specialists. A subsidiary of Equity Health Group Nigeria.",
+    "RenSource Energy is Africa’s commercial and industrial energy partner delivering solar, hybrid, and fully financed power solutions to businesses. Proven in Nigeria and expanding across Africa.",
 };
 
 /* -------------------------------------
@@ -49,6 +50,7 @@ export default function RootLayout({
           >
             <Aoscompo>
               <Header />
+              <Preloader />
               <NextTopLoader />
               {children}
               <Footer />

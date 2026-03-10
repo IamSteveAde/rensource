@@ -4,271 +4,277 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import AppointmentModal from "../../modals/AppointmentModal";
+import EnergyAssessmentModal from "../../../components/EnergyAssessmentModal";
 
-/* -------------------------------------
-   EUROPE DENTAL CLINIC BRAND COLORS
-------------------------------------- */
+/* -----------------------------
+REN SOURCE BRAND COLORS
+------------------------------*/
+
 const BRAND = {
-  blue: "#0071bc",
-  green: "#01943e",
-  dark: "#021b2d",
+  indigo: "#1A2B4C",
+  gold: "#D4A13E",
+  sand: "#F5F0E8",
 };
 
 export default function Header() {
-  const [onDark, setOnDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [appointmentOpen, setAppointmentOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  /* --------------------------------------------------
-     Detect dark sections
-  -------------------------------------------------- */
+  /* Detect Scroll */
+
   useEffect(() => {
-    const sections =
-      document.querySelectorAll<HTMLElement>("section[data-dark]");
-    if (!sections.length) return;
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        setOnDark(entries.some((entry) => entry.isIntersecting));
-      },
-      {
-        rootMargin: "-80px 0px -70% 0px",
-        threshold: 0,
-      }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /* --------------------------------------------------
-     Lock scroll on mobile menu
-  -------------------------------------------------- */
+  /* Lock Scroll on Mobile */
+
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
 
-  /* --------------------------------------------------
-     Close menu when appointment modal opens
-  -------------------------------------------------- */
-  useEffect(() => {
-    if (appointmentOpen) setMenuOpen(false);
-  }, [appointmentOpen]);
-
   return (
     <>
-      {/* ================= HEADER ================= */}
+      {/* HEADER */}
       <header
-        className={`
-          fixed top-0 left-0 w-full z-50
-          backdrop-blur-xl
-          transition-colors duration-300
-          ${onDark ? "bg-transparent text-white" : "bg-white/80"}
-        `}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-white shadow-[0_10px_40px_rgba(0,0,0,0.08)]"
+            : "bg-transparent"
+        }`}
       >
-        <div className="container mx-auto px-6 lg:max-w-screen-xl">
-          <div className="flex items-center justify-between h-20">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="flex items-center justify-between h-[90px]">
+
             {/* LOGO */}
-            <Link href="/" className="z-50 flex items-center">
+
+            <Link href="/" className="flex items-center">
               <Image
-                src="/images/logo/elogo.png"
-                alt="Europe Dental Clinic"
-                width={60}
-                height={32}
+                src={
+                  scrolled
+                    ? "/images/logo/ren-dark.png"
+                    : "/images/logo/ren-whites.png"
+                }
+                alt="RenSource Energy"
+                width={150}
+                height={40}
                 priority
-                className="object-contain"
               />
             </Link>
 
             {/* DESKTOP NAV */}
-            <nav className="hidden md:flex items-center gap-10">
-              <NavItem onDark={onDark} href="#about">
+
+            <nav
+              className={`hidden lg:flex items-center gap-12 px-8 py-3 rounded-full transition ${
+                scrolled
+                  ? ""
+                  : "bg-black/10 backdrop-blur-md border border-white/10"
+              }`}
+            >
+              <NavItem href="/" scrolled={scrolled}>
+                Home
+              </NavItem>
+
+              <NavItem href="/about" scrolled={scrolled}>
                 About
               </NavItem>
-              <NavItem onDark={onDark} href="#services">
-                Services
+
+              <NavItem href="/solutions" scrolled={scrolled}>
+                Solutions
               </NavItem>
-              <NavItem onDark={onDark} href="#team">
-                Our Team
+
+              <NavItem href="/projects" scrolled={scrolled}>
+                Project
               </NavItem>
-              <NavItem onDark={onDark} href="#insurance">
-                Insurance & Corporate
+
+              <NavItem href="/insights" scrolled={scrolled}>
+                Insights
               </NavItem>
-              <NavItem onDark={onDark} href="#contact">
+
+              
+
+              <NavItem href="/contact" scrolled={scrolled}>
                 Contact
               </NavItem>
             </nav>
 
-            {/* CTA + MOBILE TOGGLE */}
+            {/* CTA + MOBILE */}
+
             <div className="flex items-center gap-4">
-              {/* BOOK APPOINTMENT CTA */}
+
+              {/* CTA */}
+
               <button
-                onClick={() => setAppointmentOpen(true)}
+ onClick={() => setModalOpen(true)}
+ className={`
+ hidden md:inline-flex
+ items-center
+ px-7 py-3
+ text-[11px]
+ tracking-[0.28em]
+ uppercase
+ rounded-full
+ transition-all
+ duration-300
+ font-medium
+ ${
+   scrolled
+     ? "bg-[#1A2B4C] text-white hover:bg-[#0f1d36]"
+     : "bg-[#D4A13E] text-black hover:bg-[#c89435]"
+ }
+ shadow-lg
+ hover:shadow-xl
+ `}
+>
+ Request Energy Assessment
+</button>
+
+              {/* MOBILE MENU BUTTON */}
+
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
                 className={`
-                  hidden md:inline-flex
-                  items-center
-                  px-6 py-3
-                  text-[11px]
-                  tracking-[0.32em]
-                  uppercase
-                  transition
-                  ${
-                    onDark
-                      ? "bg-white text-black hover:bg-white/90"
-                      : "bg-[#0071bc] text-white hover:bg-[#005fa0]"
-                  }
+                lg:hidden
+                h-11 w-11
+                rounded-full
+                flex items-center justify-center
+                transition
+                ${
+                  scrolled
+                    ? "bg-black/5 hover:bg-black/10"
+                    : "bg-white/20 backdrop-blur"
+                }
                 `}
               >
-                Book Appointment
-              </button>
-
-              {/* MOBILE TOGGLE */}
-              <button
-                aria-label={menuOpen ? "Close menu" : "Open menu"}
-                onClick={() => setMenuOpen((prev) => !prev)}
-                className="
-                  md:hidden z-50
-                  h-11 w-11
-                  rounded-full
-                  flex items-center justify-center
-                  backdrop-blur-xl
-                  bg-white/20
-                  border border-white/30
-                  shadow-[0_8px_30px_rgba(0,0,0,0.18)]
-                  transition hover:bg-white/30
-                "
-              >
-                {menuOpen ? <X size={18} /> : <Menu size={18} />}
+                {menuOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
             </div>
           </div>
         </div>
+        <EnergyAssessmentModal
+ open={modalOpen}
+ onClose={() => setModalOpen(false)}
+/>
       </header>
 
-      {/* ================= MOBILE MENU ================= */}
+      {/* MOBILE MENU OVERLAY */}
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#021b2d]/95 backdrop-blur-2xl">
-          <nav className="h-full flex flex-col items-center justify-center">
-            <MobileNavItem href="#about" onClick={() => setMenuOpen(false)}>
-              About Us
-            </MobileNavItem>
+  <div className="fixed inset-0 z-40 bg-[#1A2B4C] text-white flex flex-col justify-center items-center space-y-10 text-lg tracking-[0.25em] uppercase">
 
-            <Divider />
+    <Link href="/" onClick={() => setMenuOpen(false)}>
+      Home
+    </Link>
 
-            <MobileNavItem href="#services" onClick={() => setMenuOpen(false)}>
-              Our Services
-            </MobileNavItem>
+    <Link href="/about" onClick={() => setMenuOpen(false)}>
+      About
+    </Link>
 
-            <Divider />
+    <Link href="/solutions" onClick={() => setMenuOpen(false)}>
+      Solutions
+    </Link>
 
-            <MobileNavItem href="#team" onClick={() => setMenuOpen(false)}>
-              Our Team
-            </MobileNavItem>
+    <Link href="/projects" onClick={() => setMenuOpen(false)}>
+      Project
+    </Link>
 
-            <Divider />
+    <Link href="/contact" onClick={() => setMenuOpen(false)}>
+      Contact
+    </Link>
 
-            <MobileNavItem
-              href="#insurance"
-              onClick={() => setMenuOpen(false)}
-            >
-              Insurance & Corporate Care
-            </MobileNavItem>
+    {/* ENERGY ASSESSMENT BUTTON */}
 
-            <Divider />
+    <button
+      onClick={() => {
+        setMenuOpen(false);
+        setModalOpen(true);
+      }}
+      className="
+        mt-6
+        px-8
+        py-4
+        rounded-full
+        bg-[#D4A13E]
+        text-black
+        text-[11px]
+        tracking-[0.3em]
+        font-medium
+        hover:bg-[#c89435]
+        transition
+        shadow-xl
+      "
+    >
+      Request Energy Assessment
+    </button>
 
-            {/* MOBILE BOOK APPOINTMENT */}
-            <button
-              onClick={() => setAppointmentOpen(true)}
-              className="
-                text-white
-                text-sm
-                tracking-[0.35em]
-                uppercase
-                py-5
-                transition hover:text-[#6fd6a8]
-              "
-            >
-              Book Appointment
-            </button>
-          </nav>
-        </div>
-      )}
-
-      {/* ================= APPOINTMENT MODAL ================= */}
-      <AppointmentModal
-        open={appointmentOpen}
-        onClose={() => setAppointmentOpen(false)}
-      />
-    </>
+  </div>
+)}
+      {/* MOBILE APP STYLE NAV */}
+      
+       </>
   );
 }
 
-/* ======================================================
-   DESKTOP NAV ITEM
-====================================================== */
+/* NAV ITEM */
+
 function NavItem({
   href,
   children,
-  onDark,
+  scrolled,
 }: {
   href: string;
   children: React.ReactNode;
-  onDark: boolean;
+  scrolled: boolean;
 }) {
   return (
     <Link
       href={href}
       className={`
-        text-[11px] tracking-[0.32em] uppercase
-        transition-colors duration-300
-        ${
-          onDark
-            ? "text-white/90 hover:text-white"
-            : "text-black/70 hover:text-black"
-        }
+      relative
+      text-[11px]
+      tracking-[0.32em]
+      uppercase
+      font-medium
+      transition
+      ${
+        scrolled
+          ? "text-[#1A2B4C] hover:text-[#D4A13E]"
+          : "text-[#D4A13E] hover:text-white"
+      }
+      group
       `}
     >
       {children}
+
+      <span
+        className="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#D4A13E] transition-all duration-300 group-hover:w-full"
+      />
     </Link>
   );
 }
 
-/* ======================================================
-   MOBILE NAV ITEM
-====================================================== */
-function MobileNavItem({
+/* MOBILE NAV */
+
+function MobileNav({
   href,
   children,
-  onClick,
+  setMenuOpen,
 }: {
   href: string;
   children: React.ReactNode;
-  onClick: () => void;
+  setMenuOpen: (v: boolean) => void;
 }) {
   return (
     <Link
       href={href}
-      onClick={onClick}
-      className="
-        text-white/90
-        text-sm
-        tracking-[0.35em]
-        uppercase
-        py-5
-        transition hover:text-white
-      "
+      onClick={() => setMenuOpen(false)}
+      className="text-lg py-6 tracking-[0.35em] uppercase hover:text-[#D4A13E]"
     >
       {children}
     </Link>
-  );
-}
-
-/* ======================================================
-   DIVIDER
-====================================================== */
-function Divider() {
-  return (
-    <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent" />
   );
 }

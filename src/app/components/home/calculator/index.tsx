@@ -1,96 +1,146 @@
-import { Building2, Network, Sparkles } from "lucide-react";
+"use client"
 
-export default function EquityHealthGroupSection() {
-  return (
-    <section className="relative py-32 overflow-hidden bg-gradient-to-br from-[#f8fafc] via-white to-[#f1f5f9]">
-      {/* SUBTLE STRUCTURAL BACKGROUND */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-[#0071bc]/8 blur-3xl" />
-        <div className="absolute bottom-0 -left-40 w-[420px] h-[420px] rounded-full bg-[#01943e]/8 blur-3xl" />
-      </div>
+import Image from "next/image"
+import { Linkedin } from "lucide-react"
 
-      <div className="relative container mx-auto px-6 lg:max-w-screen-xl">
-        <div className="grid gap-16 lg:grid-cols-2 items-center">
-          {/* LEFT — CONTENT */}
-          <div className="max-w-xl">
-            <p className="uppercase tracking-[0.35em] text-xs text-[#01943e] mb-6">
-              Equity Health Group Nigeria
-            </p>
-
-            <h2 className="text-4xl md:text-5xl font-light leading-tight bg-gradient-to-r from-[#0071bc] to-[#01943e] bg-clip-text text-transparent">
-              Part of a
-              <br />
-              National Healthcare Vision
-            </h2>
-
-            <p className="mt-10 text-black/70 text-lg leading-relaxed">
-              Europe Dental Clinic is part of{" "}
-              <span className="font-medium text-black">
-                Equity Health Group Nigeria
-              </span>
-              , a leading healthcare platform committed to building world-class
-              hospitals, clinics, and specialist care centers across Nigeria.
-            </p>
-
-            <p className="mt-6 text-black/70 text-lg leading-relaxed">
-              Together, we are redefining healthcare delivery through innovation,
-              uncompromising quality, and measurable impact on lives and
-              communities.
-            </p>
-          </div>
-
-          {/* RIGHT — PILLARS */}
-          <div className="grid gap-8 sm:grid-cols-2">
-            <Pillar
-              icon={<Building2 />}
-              title="World-Class Facilities"
-              desc="Purpose-built hospitals and clinics designed to international standards."
-              color="text-[#0071bc]"
-            />
-
-            <Pillar
-              icon={<Network />}
-              title="Integrated Healthcare Platform"
-              desc="Specialist care centers connected through strong governance and systems."
-              color="text-[#01943e]"
-            />
-
-            <Pillar
-              icon={<Sparkles />}
-              title="Innovation & Impact"
-              desc="Technology-driven healthcare solutions focused on long-term outcomes."
-              color="text-black"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+type Member = {
+name: string
+role: string
+image: string
 }
 
-/* PILLAR CARD */
-function Pillar({
-  icon,
-  title,
-  desc,
-  color,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  desc: string;
-  color: string;
-}) {
-  return (
-    <div className="p-8 border border-black/10 bg-white hover:border-[#0071bc]/30 transition">
-      <div className={`mb-6 ${color}`}>{icon}</div>
+const members: Member[] = [
+{
+name: "Board Member",
+role: "Chairman",
+image: "/images/board/member1.jpg"
+},
+{
+name: "Board Member",
+role: "Director",
+image: "/images/board/member2.jpg"
+},
+{
+name: "Board Member",
+role: "Director",
+image: "/images/board/member3.jpg"
+},
+{
+name: "Board Member",
+role: "Director",
+image: "/images/board/member4.jpg"
+},
+{
+name: "Board Member",
+role: "Director",
+image: "/images/board/member5.jpg"
+},
+{
+name: "Board Member",
+role: "Director",
+image: "/images/board/member6.jpg"
+}
+]
 
-      <h3 className="text-lg font-medium text-black mb-3">
-        {title}
-      </h3>
+export default function Leadership(){
 
-      <p className="text-black/70 leading-relaxed text-sm">
-        {desc}
-      </p>
-    </div>
-  );
+return(
+
+<section className="relative py-32 px-6">
+
+{/* background */}
+
+<div className="absolute inset-0 bg-gradient-to-b from-white via-[#faf7f0] to-white"/>
+
+<div className="max-w-7xl mx-auto relative">
+
+{/* header */}
+
+<div className="text-center">
+
+<h2 className="text-5xl md:text-6xl font-semibold bg-gradient-to-r from-[#D4A13E] to-[#1A2B4C] bg-clip-text text-transparent">
+Leadership
+</h2>
+
+<p className="mt-5 text-gray-600 max-w-xl mx-auto">
+Experienced leadership guiding the future of
+energy infrastructure across Africa.
+</p>
+
+</div>
+
+
+{/* grid */}
+
+<div className="grid md:grid-cols-3 gap-8 mt-20">
+
+{members.map((member,index)=>(
+
+<div
+key={index}
+className="group relative rounded-2xl overflow-hidden shadow-lg"
+>
+
+<Image
+src={member.image}
+alt={member.name}
+width={500}
+height={600}
+className="w-full h-[420px] object-cover transition duration-700 group-hover:scale-105"
+/>
+
+{/* overlay */}
+
+<div className="absolute inset-0 bg-gradient-to-t from-[#1A2B4C] via-transparent to-transparent opacity-80"/>
+
+{/* hover overlay */}
+
+<div className="absolute inset-0 bg-[#1A2B4C]/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+
+<div className="text-center text-white">
+
+<div className="flex justify-center mb-4">
+
+<div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#D4A13E]/20 text-[#D4A13E]">
+
+<Linkedin size={18}/>
+
+</div>
+
+</div>
+
+<p className="text-sm text-gray-300">
+View Profile
+</p>
+
+</div>
+
+</div>
+
+{/* info */}
+
+<div className="absolute bottom-6 left-6 text-white">
+
+<p className="font-semibold">
+{member.name}
+</p>
+
+<p className="text-sm text-gray-300">
+{member.role}
+</p>
+
+</div>
+
+</div>
+
+))}
+
+</div>
+
+</div>
+
+</section>
+
+)
+
 }

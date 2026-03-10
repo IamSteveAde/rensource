@@ -1,125 +1,137 @@
-import {
-  ShieldCheck,
-  GraduationCap,
-  Cpu,
-  ShieldPlus,
-  Wallet,
-  Smile,
-  Building2,
-} from "lucide-react";
+"use client"
 
-export default function WhyChooseUsSection() {
-  return (
-    <section className="relative bg-white py-32 overflow-hidden">
-      {/* ORBIT BACKGROUND */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-        <div className="relative w-[600px] h-[600px]">
-          {/* Orbit Rings */}
-          <div className="absolute inset-0 rounded-full border border-[#0071bc]/10" />
-          <div className="absolute inset-12 rounded-full border border-[#01943e]/10" />
-          <div className="absolute inset-24 rounded-full border border-black/5" />
+import CountUp from "react-countup"
+import { useInView } from "react-intersection-observer"
+import { Zap, Factory, Leaf, Fuel } from "lucide-react"
 
-          {/* Soft Glow */}
-          <div className="absolute inset-32 rounded-full bg-gradient-to-br from-[#0071bc]/10 to-[#01943e]/10 blur-3xl" />
-        </div>
-      </div>
+export default function ImpactNumbers() {
 
-      <div className="relative container mx-auto px-6 lg:max-w-screen-xl">
-        {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-24">
-          <p className="uppercase tracking-[0.35em] text-xs text-[#01943e] mb-6">
-            Why Choose Us
-          </p>
+const { ref, inView } = useInView({
+triggerOnce: true,
+threshold: 0.4
+})
 
-          <h2 className="text-4xl md:text-5xl font-light leading-tight bg-gradient-to-r from-[#0071bc] to-[#01943e] bg-clip-text text-transparent">
-            Why Choose Europe Dental Clinic
-          </h2>
-
-          <p className="mt-8 text-black/70 text-lg">
-            We deliver more than dental care — we deliver confidence, safety,
-            and excellence built on global standards.
-          </p>
-        </div>
-
-        {/* REASONS GRID */}
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-          <Reason
-            icon={<ShieldCheck />}
-            title="European Standards of Care"
-            desc="International protocols, clinical governance, and evidence-based dentistry."
-            color="#0071bc"
-          />
-
-          <Reason
-            icon={<GraduationCap />}
-            title="Highly Trained Specialists"
-            desc="Experienced dental professionals trained to deliver exceptional outcomes."
-            color="#01943e"
-          />
-
-          <Reason
-            icon={<Cpu />}
-            title="State-of-the-Art Equipment"
-            desc="Advanced diagnostic and treatment technology for precision and comfort."
-            color="#0071bc"
-          />
-
-          <Reason
-            icon={<ShieldPlus />}
-            title="Sterile & Safe Environment"
-            desc="Strict infection control and sterilization standards at every stage."
-            color="#01943e"
-          />
-
-          <Reason
-            icon={<Wallet />}
-            title="Transparent Pricing"
-            desc="Clear, honest pricing with no hidden costs — before treatment begins."
-            color="#0071bc"
-          />
-
-          <Reason
-            icon={<Smile />}
-            title="Comfort-Focused Experience"
-            desc="Designed to reduce anxiety and ensure patient comfort throughout care."
-            color="#01943e"
-          />
-
-          <Reason
-            icon={<Building2 />}
-            title="Backed by Equity Health Group"
-            desc="Strong governance, credibility, and healthcare leadership in Nigeria."
-            color="#000000"
-          />
-        </div>
-      </div>
-    </section>
-  );
+const stats = [
+{
+icon: Factory,
+value: 12,
+suffix: "+",
+label: "Projects Delivered",
+gradient: "from-[#D4A13E]/30 via-white/5 to-transparent"
+},
+{
+icon: Zap,
+value: 10,
+suffix: "MW",
+label: "Installed & Projected Capacity",
+gradient: "from-[#3B82F6]/30 via-white/5 to-transparent"
+},
+{
+icon: Leaf,
+value: 5588,
+suffix: " MT",
+label: "CO₂ Emissions Saved",
+gradient: "from-[#22C55E]/30 via-white/5 to-transparent"
+},
+{
+icon: Fuel,
+value: 2,
+suffix: "M Liters",
+label: "Fuel Saved",
+gradient: "from-[#F97316]/30 via-white/5 to-transparent"
 }
+]
 
-/* REASON CARD */
-function Reason({
-  icon,
-  title,
-  desc,
-  color,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  desc: string;
-  color: string;
-}) {
-  return (
-    <div className="relative p-8 border border-black/10 bg-white hover:border-black/20 transition">
-      <div
-        className="inline-flex p-3 rounded-full mb-6"
-        style={{ backgroundColor: `${color}15` }}
-      >
-        <div style={{ color }}>{icon}</div>
-      </div>
+return (
 
-      <h3 className="text-lg font-medium text-black mb-3">{title}</h3>
-      <p className="text-black/70 leading-relaxed">{desc}</p>
-    </div>
-  );
+<section
+ref={ref}
+className="relative py-20 md:py-28 px-6 overflow-hidden"
+>
+
+{/* Gold → Blue background */}
+
+<div className="absolute inset-0 bg-gradient-to-br from-[#D4A13E] via-[#1A2B4C] to-[#0f1d34]" />
+
+<div className="max-w-6xl mx-auto relative">
+
+{/* Header */}
+
+<div className="text-center mb-14">
+
+<h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white">
+Our Impact
+</h2>
+
+<p className="text-gray-200 mt-4 max-w-xl mx-auto text-sm md:text-base">
+Delivering measurable energy infrastructure across Africa.
+</p>
+
+</div>
+
+
+{/* Stats Grid */}
+
+<div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
+
+{stats.map((stat,index)=>{
+
+const Icon = stat.icon
+
+return(
+
+<div
+key={index}
+className={`relative rounded-xl p-6 text-center border border-white/10 bg-gradient-to-br ${stat.gradient} backdrop-blur-md hover:scale-[1.03] transition-all duration-300`}
+>
+
+{/* icon */}
+
+<div className="flex justify-center mb-3">
+
+<div className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/10 text-[#D4A13E]">
+
+<Icon size={20} />
+
+</div>
+
+</div>
+
+{/* number */}
+
+<h3 className="text-2xl md:text-3xl font-semibold text-white">
+
+{inView && (
+
+<CountUp
+end={stat.value}
+duration={2}
+separator=","
+/>
+
+)}
+
+{stat.suffix}
+
+</h3>
+
+{/* label */}
+
+<p className="text-gray-200 mt-1 text-xs md:text-sm">
+{stat.label}
+</p>
+
+</div>
+
+)
+
+})}
+
+</div>
+
+</div>
+
+</section>
+
+)
 }
