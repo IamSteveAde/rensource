@@ -120,7 +120,7 @@ className="object-cover"
 
 <div>
 
-<h2 className="text-4xl font-bold text-[#1A2B4C] mb-6">
+<h2 className="text-3xl font-bold text-[#1A2B4C] mb-6">
 About Rensource Energy
 </h2>
 
