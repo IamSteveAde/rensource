@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import EnergyAssessmentModal from "../../../components/EnergyAssessmentModal";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
@@ -25,6 +26,7 @@ const slides = [
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
+  const [openAssessment, setOpenAssessment] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -139,23 +141,23 @@ export default function Hero() {
             Explore Solutions
           </Link>
 
-          <Link
-            href="/contact"
-            className="
-            px-7 py-3 sm:px-8 sm:py-4
-            border border-white/40
-            text-white
-            text-[11px] sm:text-xs
-            tracking-[0.3em]
-            uppercase
-            rounded-full
-            hover:bg-white
-            hover:text-black
-            transition
-            "
-          >
-            Energy Assessment
-          </Link>
+         <button
+  onClick={() => setOpenAssessment(true)}
+  className="
+  px-7 py-3 sm:px-8 sm:py-4
+  border border-white/40
+  text-white
+  text-[11px] sm:text-xs
+  tracking-[0.3em]
+  uppercase
+  rounded-full
+  hover:bg-white
+  hover:text-black
+  transition
+  "
+>
+  Energy Assessment
+</button>
 
         </div>
 
@@ -281,6 +283,10 @@ export default function Hero() {
   </div>
 
 </div>
+<EnergyAssessmentModal
+  open={openAssessment}
+  onClose={() => setOpenAssessment(false)}
+/>
   </section>
   );
 }
