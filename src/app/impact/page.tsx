@@ -291,7 +291,7 @@ icon={<ZapIcon size={22}/>}
 
 <div className="mt-24 text-center">
 
-<h3 className="text-3xl font-semibold">
+<h3 className="text-3xl text-green-500 font-semibold">
 Start Your Solar Transition Today
 </h3>
 
