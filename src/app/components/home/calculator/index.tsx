@@ -26,46 +26,53 @@ bio: "Dayo Omolokun is an international finance executive with over 30 years of 
 },
 {
 name: "Solabomi Adedeji",
-role: "Investment Partner",
+role: "Director",
 image: "/images/board/sala.jpg",
 bio: "Solabomi Adedeji is a Partner at Platform Capital Investment Partners with over 28 years of experience in strategic transformation and investment banking."
 },
 {
 name: "Nojeem Jimoh",
-role: "Strategic Advisor",
+role: "Director",
 image: "/images/board/musmen.jpeg",
 bio: "Nojeem Jimoh is a senior executive with experience spanning the UK public housing sector and Nigeria’s downstream oil and gas industry."
 },
 {
 name: "Dele Olawuyi",
-role: "Strategic Advisor",
+role: "Director",
 image: "/images/board/dele.png",
 bio: "Dele Olawuyi is a technology entrepreneur and strategic advisor with over 25 years of experience building and scaling ventures."
 },
 {
 name: "Suleiman Amina Ka’oje",
-role: "Senior Legal Advisor",
+role: "Director",
 image: "/images/board/nasi.png",
 bio: "Suleiman Amina Ka’oje is a senior legal professional with over 15 years of experience in litigation and public prosecution."
 },
 {
 name: "Uche Chiwetalu",
-role: "Legal Advisor",
+role: "Director",
 image: "/images/board/uche.png",
 bio: "Uche Chiwetalu is a Nigerian legal practitioner specializing in corporate law and regulatory advisory."
 },
 {
 name: "Eng. Andreas Svoor",
-role: "Founder & Technical Lead – Munja Group",
+role: "Director",
 image: "/images/board/svoor.png",
 bio: "Andreas Svoor is an electrical engineer and renewable energy entrepreneur dedicated to transforming Africa’s energy landscape."
 },
 {
 name: "Femi Adesanya",
-role: "Chief Executive Officer",
+role: "Director",
 image: "/images/board/femi.png",
 bio: "Femi Adesanya is the Chief Executive Officer of Rensource Energy with over 15 years of experience across energy and infrastructure sectors."
+},
+{
+name: "Mr. Manny Pogoson",
+role: "Director",
+image: "/images/hero/manny.jpeg",
+bio: "Mr. Manny Pogoson is a Director at Rensource Energy with over 15 years of experience across energy and infrastructure sectors."
 }
+
 ]
 
 export default function Leadership(){
