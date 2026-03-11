@@ -2,12 +2,10 @@
 
 import { useRef, useState, useEffect } from "react"
 import dynamic from "next/dynamic"
-
-const Globe = dynamic(() => import("react-globe.gl"), {
-  ssr: false
-})
 import { motion } from "framer-motion"
 import { Sun, Factory } from "lucide-react"
+
+const Globe = dynamic(() => import("react-globe.gl"), { ssr: false })
 
 type CountryKey =
   | "Nigeria"
@@ -114,7 +112,28 @@ projects:[
 export default function GlobalEnergyGlobe(){
 
 const globeRef = useRef<any>()
+const containerRef = useRef<HTMLDivElement>(null)
+
+const [width,setWidth] = useState(1000)
 const [modal,setModal] = useState<CountryKey | null>(null)
+
+useEffect(()=>{
+
+const handleResize = () => {
+
+if(containerRef.current){
+setWidth(containerRef.current.offsetWidth)
+}
+
+}
+
+handleResize()
+
+window.addEventListener("resize",handleResize)
+
+return ()=>window.removeEventListener("resize",handleResize)
+
+},[])
 
 useEffect(()=>{
 
@@ -144,7 +163,7 @@ modal && projectData[modal]
 
 return(
 
-<section className="relative py-24 overflow-hidden">
+<section className="relative py-20 md:py-24 overflow-hidden">
 
 {/* background */}
 
@@ -154,7 +173,7 @@ return(
 
 {/* orbit rings */}
 
-<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div className="absolute inset-0 flex items-center justify-center pointer-events-none hidden md:flex">
 
 <motion.div
 animate={{ rotate: 360 }}
@@ -182,11 +201,11 @@ className="absolute w-[650px] h-[650px] border border-emerald-300/40 rounded-ful
 
 <div className="text-center max-w-3xl mx-auto">
 
-<h2 className="text-4xl md:text-5xl font-semibold bg-gradient-to-r from-emerald-600 to-green-500 bg-clip-text text-transparent">
+<h2 className="text-3xl md:text-5xl font-semibold bg-gradient-to-r from-emerald-600 to-green-500 bg-clip-text text-transparent">
 Powering Industry Across Africa
 </h2>
 
-<p className="mt-4 text-gray-700 text-base leading-relaxed">
+<p className="mt-4 text-gray-700 text-sm md:text-base leading-relaxed">
 RenSource is deploying renewable energy infrastructure across Africa,
 powering universities, healthcare institutions and industries with
 reliable clean electricity.
@@ -198,13 +217,16 @@ reliable clean electricity.
 
 <div className="mt-12 flex justify-center">
 
-<div className="w-full max-w-[1000px]">
+<div
+ref={containerRef}
+className="w-full max-w-[1000px]"
+>
 
 <Globe
 ref={globeRef}
 
-width={1000}
-height={600}
+width={width}
+height={width * 0.6}
 
 globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
 bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
@@ -221,11 +243,11 @@ labelLat="labelLat"
 labelLng="labelLng"
 labelText="name"
 labelColor={() => "#ffffff"}
-labelSize={2.0}
+labelSize={width < 600 ? 1.2 : 2}
 
 ringsData={points}
 ringColor={() => "#22c55e"}
-ringMaxRadius={6}
+ringMaxRadius={width < 600 ? 4 : 6}
 ringPropagationSpeed={2}
 ringRepeatPeriod={1800}
 
@@ -242,19 +264,19 @@ onPointClick={(p:any)=>setModal(p.name)}
 
 {modal && activeData && (
 
-<div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-6">
+<div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 md:p-6">
 
 <motion.div
 initial={{scale:0.9,opacity:0}}
 animate={{scale:1,opacity:1}}
-className="bg-white rounded-3xl p-8 max-w-lg w-full shadow-2xl"
+className="bg-white rounded-3xl p-6 md:p-8 max-w-lg w-full shadow-2xl"
 >
 
-<h3 className="text-xl font-semibold text-emerald-700 mb-3">
+<h3 className="text-lg md:text-xl font-semibold text-emerald-700 mb-3">
 {activeData.title}
 </h3>
 
-<p className="text-gray-600 mb-5">
+<p className="text-gray-600 text-sm md:text-base mb-5">
 {activeData.description}
 </p>
 
@@ -266,7 +288,7 @@ const Icon = i % 2 ? Factory : Sun
 
 return(
 
-<li key={i} className="flex items-center gap-3 text-gray-700">
+<li key={i} className="flex items-center gap-3 text-gray-700 text-sm md:text-base">
 
 <Icon size={17} className="text-emerald-500"/>
 
