@@ -5,7 +5,7 @@ import dynamic from "next/dynamic"
 import { motion } from "framer-motion"
 import { Sun, Factory } from "lucide-react"
 
-const Globe = dynamic(() => import("react-globe.gl"), { ssr: false })
+const Globe = dynamic(() => import("react-globe.gl"), { ssr:false })
 
 type CountryKey =
   | "Nigeria"
@@ -16,20 +16,18 @@ type CountryKey =
 
 type Point = {
   name: CountryKey
-  lat: number
-  lng: number
-  labelLat: number
-  labelLng: number
-  size: number
-  color: string
+  lat:number
+  lng:number
+  size:number
+  color:string
 }
 
-const points: Point[] = [
-{ name:"Nigeria", lat:9.082, lng:8.675, labelLat:13, labelLng:13, size:0.7, color:"#22c55e" },
-{ name:"Ghana", lat:6.8, lng:-3.5, labelLat:9, labelLng:-8, size:0.55, color:"#4ade80" },
-{ name:"Kenya", lat:-0.0236, lng:37.9062, labelLat:-2, labelLng:41, size:0.7, color:"#22c55e" },
-{ name:"Egypt", lat:26.8206, lng:30.8025, labelLat:29, labelLng:34, size:0.6, color:"#4ade80" },
-{ name:"South Africa", lat:-30.5595, lng:22.9375, labelLat:-34, labelLng:26, size:0.6, color:"#4ade80" }
+const points:Point[] = [
+{ name:"Nigeria", lat:9.082, lng:8.675, size:0.75, color:"#22c55e"},
+{ name:"Ghana", lat:7.9465, lng:-1.0232, size:0.7, color:"#4ade80"},
+{ name:"Kenya", lat:-0.0236, lng:37.9062, size:0.75, color:"#22c55e"},
+{ name:"Egypt", lat:26.8206, lng:30.8025, size:0.7, color:"#4ade80"},
+{ name:"South Africa", lat:-30.5595, lng:22.9375, size:0.7, color:"#4ade80"}
 ]
 
 const projectData:any = {
@@ -54,20 +52,39 @@ projects:[
 "Rubis Kenya – 20kWp Installation",
 "Rubis Kenya – 20kWp Expansion"
 ]
-}
+},
 
-}
-
-const expansionContent = (country:CountryKey)=>({
-title:`${country} Expansion`,
-description:`RenSource is actively expanding its renewable energy infrastructure across Africa. ${country} represents a strategic market in our long-term vision to deliver reliable, clean and cost-efficient power solutions.`,
+Ghana:{
+title:"Ghana Energy Expansion",
+description:"RenSource is exploring renewable energy deployment opportunities across Ghana’s commercial and industrial sectors.",
 projects:[
-"Market assessment and feasibility studies underway",
-"Partnerships with local energy stakeholders",
-"Commercial solar deployments planned",
-"Industrial energy solutions for large power consumers"
+"Solar feasibility assessments",
+"Industrial solar partnerships",
+"Commercial solar projects pipeline"
 ]
-})
+},
+
+Egypt:{
+title:"Egypt Market Entry",
+description:"Egypt represents a strategic North African market for renewable infrastructure expansion.",
+projects:[
+"Energy market partnerships",
+"Industrial solar feasibility",
+"Clean power infrastructure planning"
+]
+},
+
+"South Africa":{
+title:"South Africa Expansion",
+description:"South Africa remains a key renewable energy market in Southern Africa with strong commercial demand.",
+projects:[
+"Industrial solar energy systems",
+"Energy resilience infrastructure",
+"Commercial solar hybrid solutions"
+]
+}
+
+}
 
 export default function GlobalEnergyGlobe(){
 
@@ -80,20 +97,19 @@ const [isMobile,setIsMobile] = useState(false)
 
 useEffect(()=>{
 
-const checkMobile = () => {
-setIsMobile(window.innerWidth < 768)
-}
+const checkMobile = () => setIsMobile(window.innerWidth < 768)
 
 checkMobile()
+
 window.addEventListener("resize",checkMobile)
 
-return () => window.removeEventListener("resize",checkMobile)
+return ()=>window.removeEventListener("resize",checkMobile)
 
 },[])
 
 useEffect(()=>{
 
-const handleResize = () => {
+const resize = () => {
 
 if(containerRef.current){
 setWidth(containerRef.current.offsetWidth)
@@ -101,10 +117,11 @@ setWidth(containerRef.current.offsetWidth)
 
 }
 
-handleResize()
-window.addEventListener("resize",handleResize)
+resize()
 
-return ()=>window.removeEventListener("resize",handleResize)
+window.addEventListener("resize",resize)
+
+return ()=>window.removeEventListener("resize",resize)
 
 },[])
 
@@ -119,7 +136,7 @@ controls.enableRotate = true
 controls.enablePan = false
 
 globeRef.current.pointOfView(
-{ lat:10, lng:20, altitude:isMobile ? 1.6 : 1.3 },
+{ lat:10, lng:20, altitude:isMobile ? 1.7 : 1.3 },
 0
 )
 
@@ -127,18 +144,49 @@ globeRef.current.pointOfView(
 
 },[isMobile])
 
-const activeData =
-modal && projectData[modal]
-? projectData[modal]
-: modal
-? expansionContent(modal)
-: null
+const activeData = modal ? projectData[modal] : null
 
 return(
 
 <section className="relative py-16 md:py-24 overflow-hidden">
 
+{/* Background */}
+
 <div className="absolute inset-0 bg-gradient-to-b from-emerald-100 via-white to-white"/>
+
+{/* Orbit System */}
+
+<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+
+<motion.div
+animate={{ rotate:360 }}
+transition={{ repeat:Infinity, duration:120, ease:"linear" }}
+className="absolute w-[1100px] h-[1100px] border border-emerald-400/30 rounded-full"
+/>
+
+<motion.div
+animate={{ rotate:-360 }}
+transition={{ repeat:Infinity, duration:160, ease:"linear" }}
+className="absolute w-[800px] h-[800px] border border-emerald-400/30 rounded-full"
+/>
+
+<motion.div
+animate={{ rotate:360 }}
+transition={{ repeat:Infinity, duration:200, ease:"linear" }}
+className="absolute w-[550px] h-[550px] border border-emerald-300/30 rounded-full"
+/>
+
+{/* Orbit Dot */}
+
+<motion.div
+animate={{ rotate:360 }}
+transition={{ repeat:Infinity, duration:18, ease:"linear" }}
+className="absolute w-[550px] h-[550px]"
+>
+<div className="absolute top-0 left-1/2 w-3 h-3 bg-emerald-500 rounded-full"/>
+</motion.div>
+
+</div>
 
 <div className="max-w-[1500px] mx-auto px-4 md:px-6 relative">
 
@@ -152,15 +200,14 @@ Powering Industry Across Africa
 
 <p className="mt-4 text-gray-700 text-sm md:text-base leading-relaxed">
 RenSource is deploying renewable energy infrastructure across Africa,
-powering universities, healthcare institutions and industries with
-reliable clean electricity.
+powering universities, healthcare institutions and industries with reliable clean electricity.
 </p>
 
 </div>
 
 {/* Globe */}
 
-<div className="mt-10 md:mt-14 flex justify-center">
+<div className="mt-12 flex justify-center">
 
 <div ref={containerRef} className="w-full max-w-[1100px]">
 
@@ -168,39 +215,32 @@ reliable clean electricity.
 ref={globeRef}
 
 width={width}
-height={isMobile ? width * 1.2 : width * 0.65}
+height={isMobile ? width*1.15 : width*0.65}
 
 globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
 bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
 
 backgroundColor="rgba(0,0,0,0)"
 
-/* BIGGER TOUCH TARGET */
-
 pointsData={points}
 pointAltitude="size"
 pointColor="color"
-pointRadius={isMobile ? 0.35 : 0.18}
-
-/* CLICKABLE POINTS */
+pointRadius={isMobile ? 0.45 : 0.22}
 
 onPointClick={(p:any)=>setModal(p.name)}
 
-/* CLICKABLE LABELS */
-
 labelsData={points}
-labelLat="labelLat"
-labelLng="labelLng"
+labelLat="lat"
+labelLng="lng"
 labelText="name"
-labelColor={() => "#ffffff"}
-labelSize={isMobile ? 1.8 : 2}
-labelDotRadius={isMobile ? 0.35 : 0.2}
+labelColor={()=>"#ffffff"}
+labelSize={isMobile ? 2.2 : 2.8}
+labelDotRadius={isMobile ? 0.45 : 0.25}
+
 onLabelClick={(p:any)=>setModal(p.name)}
 
-/* ENERGY RINGS */
-
 ringsData={points}
-ringColor={() => "#22c55e"}
+ringColor={()=>"#22c55e"}
 ringMaxRadius={isMobile ? 5 : 6}
 ringPropagationSpeed={2}
 ringRepeatPeriod={1800}
@@ -236,7 +276,7 @@ className="bg-white rounded-3xl p-6 md:p-8 max-w-lg w-full shadow-2xl"
 
 {activeData.projects.map((project:string,i:number)=>{
 
-const Icon = i % 2 ? Factory : Sun
+const Icon = i%2 ? Factory : Sun
 
 return(
 
