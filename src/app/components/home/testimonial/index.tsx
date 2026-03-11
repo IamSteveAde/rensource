@@ -1,7 +1,11 @@
 "use client"
 
 import { useRef, useState, useEffect } from "react"
-import Globe from "react-globe.gl"
+import dynamic from "next/dynamic"
+
+const Globe = dynamic(() => import("react-globe.gl"), {
+  ssr: false
+})
 import { motion } from "framer-motion"
 import { Sun, Factory } from "lucide-react"
 
