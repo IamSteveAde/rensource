@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
+import IntroAudio from "./components/IntroAudio"
 
 import { ThemeProvider } from "next-themes";
 import NextTopLoader from "nextjs-toploader";
@@ -48,7 +49,9 @@ export default function RootLayout({
             defaultTheme="light"
           >
             <Aoscompo>
+              <IntroAudio />
               <Header />
+               
 
               <NextTopLoader />
               {children}

@@ -10,20 +10,52 @@ export default function HomeInsights(){
 const posts = insights.slice(0,5)
 
 const gradients = [
-"bg-gradient-to-br from-[#D4A13E]/20 via-[#D4A13E]/10 to-transparent",
-"bg-gradient-to-br from-[#1A2B4C]/20 via-[#1A2B4C]/10 to-transparent",
-"bg-gradient-to-br from-emerald-500/20 via-emerald-500/10 to-transparent",
-"bg-gradient-to-br from-purple-500/20 via-purple-500/10 to-transparent",
-"bg-gradient-to-br from-rose-500/20 via-rose-500/10 to-transparent"
+"bg-gradient-to-br from-emerald-500/20 via-green-400/10 to-transparent",
+"bg-gradient-to-br from-green-500/20 via-emerald-400/10 to-transparent",
+"bg-gradient-to-br from-emerald-400/20 via-green-500/10 to-transparent",
+"bg-gradient-to-br from-green-400/20 via-emerald-300/10 to-transparent",
+"bg-gradient-to-br from-emerald-500/20 via-green-300/10 to-transparent"
 ]
 
 return(
 
-<section className="relative py-32 px-6 overflow-hidden">
+<section className="relative py-32 px-6 overflow-hidden bg-white">
 
-{/* SECTION BACKGROUND */}
+{/* GREEN GRADIENT BACKGROUND */}
 
-<div className="absolute inset-0 bg-gradient-to-b from-[#D4A13E]/25 via-white to-white"/>
+<div className="absolute inset-0 bg-gradient-to-b from-emerald-100/60 via-white to-white"/>
+
+
+{/* ORBIT BACKGROUND */}
+
+<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+
+{/* orbit 1 */}
+
+<div className="absolute w-[900px] h-[900px] rounded-full border border-emerald-300/30 animate-[spin_90s_linear_infinite]">
+
+<div className="absolute -top-2 left-1/2 w-3 h-3 bg-emerald-500 rounded-full shadow-lg shadow-emerald-400"/>
+
+</div>
+
+{/* orbit 2 */}
+
+<div className="absolute w-[650px] h-[650px] rounded-full border border-green-300/30 animate-[spin_70s_linear_infinite_reverse]">
+
+<div className="absolute -top-2 left-1/2 w-2.5 h-2.5 bg-green-500 rounded-full shadow-md shadow-green-400"/>
+
+</div>
+
+{/* orbit 3 */}
+
+<div className="absolute w-[420px] h-[420px] rounded-full border border-emerald-200/40 animate-[spin_50s_linear_infinite]">
+
+<div className="absolute -top-2 left-1/2 w-2 h-2 bg-emerald-600 rounded-full shadow shadow-emerald-500"/>
+
+</div>
+
+</div>
+
 
 <div className="relative max-w-7xl mx-auto">
 
@@ -33,7 +65,7 @@ return(
 
 <div>
 
-<h2 className="text-4xl md:text-5xl font-semibold bg-gradient-to-r from-[#D4A13E] to-[#1A2B4C] bg-clip-text text-transparent">
+<h2 className="text-4xl md:text-5xl font-semibold bg-gradient-to-r from-emerald-500 to-green-700 bg-clip-text text-transparent">
 Insights & Perspectives
 </h2>
 
@@ -45,7 +77,7 @@ Industry perspectives, project milestones and strategic insights shaping the fut
 
 <Link
 href="/insights"
-className="flex items-center gap-2 text-[#D4A13E] font-medium group"
+className="flex items-center gap-2 text-emerald-600 font-medium group"
 >
 
 View All Insights
@@ -77,11 +109,11 @@ className="group snap-start min-w-[85%] md:min-w-[calc(33.333%-1rem)]"
 
 {/* CARD */}
 
-<div className={`relative rounded-3xl my-6 p-7 ${gradient} backdrop-blur-sm shadow-lg hover:shadow-2xl transition duration-500 h-[430px] flex flex-col`}>
+<div className={`relative rounded-3xl my-6 p-7 ${gradient} backdrop-blur-md border border-emerald-100 shadow-lg hover:shadow-2xl transition duration-500 h-[430px] flex flex-col`}>
 
 {/* IMAGE */}
 
-<div className="relative h-[180px]  rounded-xl overflow-hidden">
+<div className="relative h-[180px] rounded-xl overflow-hidden">
 
 <Image
 src={post.image}
@@ -100,7 +132,7 @@ className="object-cover transition duration-700 group-hover:scale-105"
 {post.date}
 </p>
 
-<h3 className="mt-2 text-lg font-semibold text-[#1A2B4C] group-hover:text-[#D4A13E] transition">
+<h3 className="mt-2 text-lg font-semibold text-gray-900 group-hover:text-emerald-600 transition">
 {post.title}
 </h3>
 
@@ -108,7 +140,7 @@ className="object-cover transition duration-700 group-hover:scale-105"
 {post.description}
 </p>
 
-<span className="mt-auto flex items-center gap-2 text-[#D4A13E] font-medium">
+<span className="mt-auto flex items-center gap-2 text-emerald-600 font-medium">
 
 Read Insight
 
@@ -137,7 +169,7 @@ Read Insight
 
 <Link
 href="/insights"
-className="flex items-center gap-3 bg-[#1A2B4C] text-white px-10 py-4 rounded-full shadow-xl hover:shadow-2xl hover:bg-[#14223c] transition"
+className="flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white px-10 py-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition"
 >
 
 Explore All Insights

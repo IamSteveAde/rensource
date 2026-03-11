@@ -56,12 +56,12 @@ export default function Hero() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src="/images/hero/energy.mp4" type="video/mp4" />
+        <source src="/images/hero/energys.mp4" type="video/mp4" />
       </video>
 
-      {/* OVERLAY */}
+      {/* GREEN OVERLAY */}
 
-      <div className="absolute inset-0 bg-[#1A2B4C]/85" />
+      <div className="absolute inset-0 bg-gradient-to-b from-emerald-900/80 via-emerald-800/70 to-emerald-900/80" />
 
       {/* CONTENT */}
 
@@ -69,7 +69,7 @@ export default function Hero() {
 
         {/* LABEL */}
 
-        <p className="text-[10px] sm:text-xs tracking-[0.35em] uppercase text-[#D4A13E] mb-6">
+        <p className="text-[10px] sm:text-xs tracking-[0.35em] uppercase text-emerald-300 mb-6">
           Proven in Nigeria • Ready for Africa
         </p>
 
@@ -86,6 +86,7 @@ export default function Hero() {
                   : "opacity-0 translate-y-6 pointer-events-none"
               }`}
             >
+
               {/* TITLE */}
 
               <h1
@@ -99,9 +100,9 @@ export default function Hero() {
                 leading-tight
                 lg:whitespace-nowrap
                 bg-gradient-to-r
-                from-[#D4A13E]
-                via-[#FFD978]
-                to-[#D4A13E]
+                from-emerald-300
+                via-green-200
+                to-emerald-300
                 bg-clip-text
                 text-transparent
                 "
@@ -114,6 +115,7 @@ export default function Hero() {
               <p className="mt-6 text-sm sm:text-base md:text-lg text-white/80 max-w-xl md:max-w-2xl mx-auto">
                 {slide.subtitle}
               </p>
+
             </div>
           ))}
 
@@ -127,13 +129,13 @@ export default function Hero() {
             href="/solutions"
             className="
             px-7 py-3 sm:px-8 sm:py-4
-            bg-[#D4A13E]
-            text-black
+            bg-emerald-500
+            text-white
             text-[11px] sm:text-xs
             tracking-[0.3em]
             uppercase
             rounded-full
-            hover:bg-[#c89435]
+            hover:bg-emerald-600
             transition
             shadow-xl
             "
@@ -141,23 +143,23 @@ export default function Hero() {
             Explore Solutions
           </Link>
 
-         <button
-  onClick={() => setOpenAssessment(true)}
-  className="
-  px-7 py-3 sm:px-8 sm:py-4
-  border border-white/40
-  text-white
-  text-[11px] sm:text-xs
-  tracking-[0.3em]
-  uppercase
-  rounded-full
-  hover:bg-white
-  hover:text-black
-  transition
-  "
->
-  Energy Assessment
-</button>
+          <button
+            onClick={() => setOpenAssessment(true)}
+            className="
+            px-7 py-3 sm:px-8 sm:py-4
+            border border-white/40
+            text-white
+            text-[11px] sm:text-xs
+            tracking-[0.3em]
+            uppercase
+            rounded-full
+            hover:bg-emerald-500
+            hover:border-emerald-500
+            transition
+            "
+          >
+            Energy Assessment
+          </button>
 
         </div>
 
@@ -176,7 +178,7 @@ export default function Hero() {
                 transition-all duration-500
                 ${
                   current === index
-                    ? "w-8 sm:w-10 bg-[#D4A13E]"
+                    ? "w-8 sm:w-10 bg-emerald-400"
                     : "w-3 sm:w-4 bg-white/40 hover:bg-white/70"
                 }
               `}
@@ -203,12 +205,12 @@ export default function Hero() {
         border border-white/20
         items-center justify-center
         transition
-        hover:bg-[#D4A13E]
+        hover:bg-emerald-500
         hover:scale-110
         shadow-xl
         "
       >
-        <ChevronLeft size={26} className="group-hover:text-black transition" />
+        <ChevronLeft size={26} className="group-hover:text-white transition" />
       </button>
 
       <button
@@ -225,69 +227,56 @@ export default function Hero() {
         border border-white/20
         items-center justify-center
         transition
-        hover:bg-[#D4A13E]
+        hover:bg-emerald-500
         hover:scale-110
         shadow-xl
         "
       >
-        <ChevronRight size={26} className="group-hover:text-black transition" />
+        <ChevronRight size={26} className="group-hover:text-white transition" />
       </button>
 
-     {/* PARTNERS */}
+      {/* PARTNERS */}
 
-{/* PARTNER LOGOS */}
+      <div className="absolute bottom-6 w-full flex justify-center px-4">
 
-{/* PARTNER LOGOS */}
+        <div className="
+          w-full max-w-7xl
+          overflow-hidden
+          bg-white
+          rounded-xl
+          shadow-[0_10px_30px_rgba(0,0,0,0.1)]
+          py-2 sm:py-3
+        ">
 
-<div className="absolute bottom-6 w-full flex justify-center px-4">
+          <div className="flex w-max items-center gap-8 sm:gap-12 animate-partners">
 
-  <div className="
-      w-full max-w-7xl
-      overflow-hidden
-      bg-white
-      rounded-xl
-      shadow-[0_10px_30px_rgba(0,0,0,0.1)]
-      py-2 sm:py-3
-  ">
+            {[...Array(2)].map((_, i) => (
+              <>
+                <PartnerLogo src="/images/logo/p1.png" key={`p1-${i}`} />
+                <PartnerLogo src="/images/logo/p2.png" key={`p2-${i}`} />
+                <PartnerLogo src="/images/logo/p3.png" key={`p3-${i}`} />
+                <PartnerLogo src="/images/logo/p4.png" key={`p4-${i}`} />
+                <PartnerLogo src="/images/logo/p5.png" key={`p5-${i}`} />
+                <PartnerLogo src="/images/logo/p6.png" key={`p6-${i}`} />
+                <PartnerLogo src="/images/logo/p7.png" key={`p7-${i}`} />
+                <PartnerLogo src="/images/logo/p8.png" key={`p8-${i}`} />
+                <PartnerLogo src="/images/logo/p9.png" key={`p9-${i}`} />
+                <PartnerLogo src="/images/logo/p10.png" key={`p10-${i}`} />
+              </>
+            ))}
 
-    <div className="flex w-max items-center gap-8 sm:gap-12 animate-partners">
+          </div>
 
-      {/* FIRST SET */}
+        </div>
 
-      <PartnerLogo src="/images/logo/p1.png" />
-      <PartnerLogo src="/images/logo/p2.png" />
-      <PartnerLogo src="/images/logo/p3.png" />
-      <PartnerLogo src="/images/logo/p4.png" />
-      <PartnerLogo src="/images/logo/p5.png" />
-      <PartnerLogo src="/images/logo/p6.png" />
-      <PartnerLogo src="/images/logo/p7.png" />
-      <PartnerLogo src="/images/logo/p8.png" />
-      <PartnerLogo src="/images/logo/p9.png" />
-      <PartnerLogo src="/images/logo/p10.png" />
+      </div>
 
-      {/* DUPLICATE FOR SEAMLESS SCROLL */}
+      <EnergyAssessmentModal
+        open={openAssessment}
+        onClose={() => setOpenAssessment(false)}
+      />
 
-      <PartnerLogo src="/images/logo/p1.png" />
-      <PartnerLogo src="/images/logo/p2.png" />
-      <PartnerLogo src="/images/logo/p3.png" />
-      <PartnerLogo src="/images/logo/p4.png" />
-      <PartnerLogo src="/images/logo/p5.png" />
-      <PartnerLogo src="/images/logo/p6.png" />
-      <PartnerLogo src="/images/logo/p7.png" />
-      <PartnerLogo src="/images/logo/p8.png" />
-      <PartnerLogo src="/images/logo/p9.png" />
-      <PartnerLogo src="/images/logo/p10.png" />
-
-    </div>
-
-  </div>
-
-</div>
-<EnergyAssessmentModal
-  open={openAssessment}
-  onClose={() => setOpenAssessment(false)}
-/>
-  </section>
+    </section>
   );
 }
 

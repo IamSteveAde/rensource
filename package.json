@@ -25,6 +25,7 @@
     "react": "^19.0.0",
     "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",
+    "react-globe.gl": "^2.37.0",
     "react-hot-toast": "^2.4.1",
     "react-intersection-observer": "^10.0.3",
     "react-markdown": "^10.1.0",
@@ -33,7 +34,8 @@
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "resend": "^6.8.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "three": "^0.183.2"
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",
