@@ -116,6 +116,20 @@ const containerRef = useRef<HTMLDivElement>(null)
 
 const [width,setWidth] = useState(1000)
 const [modal,setModal] = useState<CountryKey | null>(null)
+const [isMobile,setIsMobile] = useState(false)
+
+useEffect(()=>{
+
+const checkMobile = () => {
+setIsMobile(window.innerWidth < 768)
+}
+
+checkMobile()
+window.addEventListener("resize",checkMobile)
+
+return () => window.removeEventListener("resize",checkMobile)
+
+},[])
 
 useEffect(()=>{
 
@@ -128,7 +142,6 @@ setWidth(containerRef.current.offsetWidth)
 }
 
 handleResize()
-
 window.addEventListener("resize",handleResize)
 
 return ()=>window.removeEventListener("resize",handleResize)
@@ -163,45 +176,15 @@ modal && projectData[modal]
 
 return(
 
-<section className="relative py-20 md:py-24 overflow-hidden">
-
-{/* background */}
+<section className="relative py-16 md:py-24 overflow-hidden">
 
 <div className="absolute inset-0 bg-gradient-to-b from-emerald-100 via-white to-white"/>
 
-<div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[1100px] h-[500px] bg-emerald-500/25 blur-[160px] rounded-full"/>
-
-{/* orbit rings */}
-
-<div className="absolute inset-0 flex items-center justify-center pointer-events-none hidden md:flex">
-
-<motion.div
-animate={{ rotate: 360 }}
-transition={{ repeat: Infinity, duration: 120, ease:"linear" }}
-className="absolute w-[1100px] h-[1100px] border border-emerald-400/40 rounded-full"
-/>
-
-<motion.div
-animate={{ rotate: -360 }}
-transition={{ repeat: Infinity, duration: 160, ease:"linear" }}
-className="absolute w-[850px] h-[850px] border border-emerald-400/40 rounded-full"
-/>
-
-<motion.div
-animate={{ rotate: 360 }}
-transition={{ repeat: Infinity, duration: 200, ease:"linear" }}
-className="absolute w-[650px] h-[650px] border border-emerald-300/40 rounded-full"
-/>
-
-</div>
-
-<div className="max-w-[1500px] mx-auto px-6 relative">
-
-{/* header */}
+<div className="max-w-[1500px] mx-auto px-4 md:px-6 relative">
 
 <div className="text-center max-w-3xl mx-auto">
 
-<h2 className="text-3xl md:text-5xl font-semibold bg-gradient-to-r from-emerald-600 to-green-500 bg-clip-text text-transparent">
+<h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold bg-gradient-to-r from-emerald-600 to-green-500 bg-clip-text text-transparent">
 Powering Industry Across Africa
 </h2>
 
@@ -213,20 +196,18 @@ reliable clean electricity.
 
 </div>
 
-{/* globe */}
-
-<div className="mt-12 flex justify-center">
+<div className="mt-10 md:mt-14 flex justify-center">
 
 <div
 ref={containerRef}
-className="w-full max-w-[1000px]"
+className="w-full max-w-[1100px]"
 >
 
 <Globe
 ref={globeRef}
 
 width={width}
-height={width * 0.6}
+height={isMobile ? width * 1.15 : width * 0.65}
 
 globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
 bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
@@ -243,11 +224,11 @@ labelLat="labelLat"
 labelLng="labelLng"
 labelText="name"
 labelColor={() => "#ffffff"}
-labelSize={width < 600 ? 1.2 : 2}
+labelSize={isMobile ? 1.2 : 2}
 
 ringsData={points}
 ringColor={() => "#22c55e"}
-ringMaxRadius={width < 600 ? 4 : 6}
+ringMaxRadius={isMobile ? 4 : 6}
 ringPropagationSpeed={2}
 ringRepeatPeriod={1800}
 
@@ -260,11 +241,9 @@ onPointClick={(p:any)=>setModal(p.name)}
 
 </div>
 
-{/* modal */}
-
 {modal && activeData && (
 
-<div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 md:p-6">
+<div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
 
 <motion.div
 initial={{scale:0.9,opacity:0}}
