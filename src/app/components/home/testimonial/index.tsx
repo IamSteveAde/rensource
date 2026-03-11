@@ -25,51 +25,11 @@ type Point = {
 }
 
 const points: Point[] = [
-{
-name:"Nigeria",
-lat:9.082,
-lng:8.675,
-labelLat:13,
-labelLng:13,
-size:0.7,
-color:"#22c55e"
-},
-{
-name:"Ghana",
-lat:6.8,
-lng:-3.5,
-labelLat:9,
-labelLng:-8,
-size:0.55,
-color:"#4ade80"
-},
-{
-name:"Kenya",
-lat:-0.0236,
-lng:37.9062,
-labelLat:-2,
-labelLng:41,
-size:0.7,
-color:"#22c55e"
-},
-{
-name:"Egypt",
-lat:26.8206,
-lng:30.8025,
-labelLat:29,
-labelLng:34,
-size:0.6,
-color:"#4ade80"
-},
-{
-name:"South Africa",
-lat:-30.5595,
-lng:22.9375,
-labelLat:-34,
-labelLng:26,
-size:0.6,
-color:"#4ade80"
-}
+{ name:"Nigeria", lat:9.082, lng:8.675, labelLat:13, labelLng:13, size:0.7, color:"#22c55e" },
+{ name:"Ghana", lat:6.8, lng:-3.5, labelLat:9, labelLng:-8, size:0.55, color:"#4ade80" },
+{ name:"Kenya", lat:-0.0236, lng:37.9062, labelLat:-2, labelLng:41, size:0.7, color:"#22c55e" },
+{ name:"Egypt", lat:26.8206, lng:30.8025, labelLat:29, labelLng:34, size:0.6, color:"#4ade80" },
+{ name:"South Africa", lat:-30.5595, lng:22.9375, labelLat:-34, labelLng:26, size:0.6, color:"#4ade80" }
 ]
 
 const projectData:any = {
@@ -154,18 +114,18 @@ if(globeRef.current){
 
 const controls = globeRef.current.controls()
 
-controls.enableZoom = false
+controls.enableZoom = true
+controls.enableRotate = true
 controls.enablePan = false
-controls.enableRotate = false
 
 globeRef.current.pointOfView(
-{ lat:10, lng:20, altitude:1.3 },
+{ lat:10, lng:20, altitude:isMobile ? 1.6 : 1.3 },
 0
 )
 
 }
 
-},[])
+},[isMobile])
 
 const activeData =
 modal && projectData[modal]
@@ -182,6 +142,8 @@ return(
 
 <div className="max-w-[1500px] mx-auto px-4 md:px-6 relative">
 
+{/* Header */}
+
 <div className="text-center max-w-3xl mx-auto">
 
 <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold bg-gradient-to-r from-emerald-600 to-green-500 bg-clip-text text-transparent">
@@ -196,43 +158,52 @@ reliable clean electricity.
 
 </div>
 
+{/* Globe */}
+
 <div className="mt-10 md:mt-14 flex justify-center">
 
-<div
-ref={containerRef}
-className="w-full max-w-[1100px]"
->
+<div ref={containerRef} className="w-full max-w-[1100px]">
 
 <Globe
 ref={globeRef}
 
 width={width}
-height={isMobile ? width * 1.15 : width * 0.65}
+height={isMobile ? width * 1.2 : width * 0.65}
 
 globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
 bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
 
 backgroundColor="rgba(0,0,0,0)"
 
+/* BIGGER TOUCH TARGET */
+
 pointsData={points}
 pointAltitude="size"
 pointColor="color"
-pointRadius={0.18}
+pointRadius={isMobile ? 0.35 : 0.18}
+
+/* CLICKABLE POINTS */
+
+onPointClick={(p:any)=>setModal(p.name)}
+
+/* CLICKABLE LABELS */
 
 labelsData={points}
 labelLat="labelLat"
 labelLng="labelLng"
 labelText="name"
 labelColor={() => "#ffffff"}
-labelSize={isMobile ? 1.2 : 2}
+labelSize={isMobile ? 1.8 : 2}
+labelDotRadius={isMobile ? 0.35 : 0.2}
+onLabelClick={(p:any)=>setModal(p.name)}
+
+/* ENERGY RINGS */
 
 ringsData={points}
 ringColor={() => "#22c55e"}
-ringMaxRadius={isMobile ? 4 : 6}
+ringMaxRadius={isMobile ? 5 : 6}
 ringPropagationSpeed={2}
 ringRepeatPeriod={1800}
-
-onPointClick={(p:any)=>setModal(p.name)}
 />
 
 </div>
@@ -240,6 +211,8 @@ onPointClick={(p:any)=>setModal(p.name)}
 </div>
 
 </div>
+
+{/* Modal */}
 
 {modal && activeData && (
 
