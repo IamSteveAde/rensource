@@ -21,7 +21,7 @@ return(
 <section className="relative h-screen flex items-center justify-center overflow-hidden">
 
 <Image
-src="/images/hero/h2.webp"
+src="/images/hero/h1.webp"
 fill
 alt="Rensource Energy"
 className="object-cover"
@@ -201,7 +201,7 @@ Submit Inquiry
 Our Global Offices
 </h2>
 
-<div className="grid md:grid-cols-3 gap-10">
+<div className="grid md:grid-cols-2 gap-10 justify-center max-w-4xl mx-auto">
 
 <LocationCard
 city="Lagos"
@@ -213,17 +213,11 @@ city="Abuja"
 address="Central Business District Abuja"
 />
 
-<LocationCard
-city="Nairobi"
-address="Westlands Nairobi, Kenya"
-/>
-
 </div>
 
 </div>
 
 </section>
-
 
 
 {/* FINAL CTA */}

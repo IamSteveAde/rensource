@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import IntroAudio from "./components/IntroAudio"
+import Survey from "./components/survey"
+import Verify from "./components/verify"
 
 import { ThemeProvider } from "next-themes";
 import NextTopLoader from "nextjs-toploader";
@@ -40,7 +42,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    
     <html lang="en" suppressHydrationWarning>
+      <Verify />
       <body className={dmsans.className}>
         <AppContextProvider>
           <ThemeProvider
@@ -50,6 +54,7 @@ export default function RootLayout({
           >
             <Aoscompo>
               <IntroAudio />
+              <Survey />
               <Header />
                
 

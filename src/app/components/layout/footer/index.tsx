@@ -26,9 +26,7 @@ export default function Footer() {
               </h2>
 
               <p className="mt-4 text-white/70 max-w-md">
-                Rensource helps commercial and industrial businesses
-                transition to reliable solar, hybrid, and fully financed
-                energy solutions.
+                Rensource enables commercial and industrial businesses transition to reliable energy through solar and battery solutions, providing upfront financing that converts capital expenditure into operating expenses via a predictable monthly energy charge, improving cash flow management and overall profitability.
               </p>
             </div>
 

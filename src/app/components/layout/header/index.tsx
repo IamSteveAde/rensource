@@ -51,7 +51,7 @@ export default function Header() {
       >
         <div className="max-w-[1400px] mx-auto px-6">
 
-          <div className="flex items-center justify-between h-[90px]">
+          <div className="flex items-center justify-between h-[78px]">
 
             {/* LOGO */}
 
@@ -63,8 +63,8 @@ export default function Header() {
                     : "/images/logo/ren-whites.png"
                 }
                 alt="RenSource Energy"
-                width={150}
-                height={40}
+                width={140}
+                height={36}
                 priority
               />
             </Link>
@@ -72,7 +72,7 @@ export default function Header() {
             {/* DESKTOP NAV */}
 
             <nav
-              className={`hidden lg:flex items-center gap-12 px-8 py-3 rounded-full transition ${
+              className={`hidden lg:flex items-center gap-8 px-6 py-2 rounded-full transition ${
                 scrolled
                   ? ""
                   : "bg-white/10 backdrop-blur-md border border-white/20"
@@ -83,13 +83,14 @@ export default function Header() {
               <NavItem href="/solutions" scrolled={scrolled}>Solutions</NavItem>
               <NavItem href="/projects" scrolled={scrolled}>Projects</NavItem>
               <NavItem href="/impact" scrolled={scrolled}>Impact</NavItem>
+              <NavItem href="/future" scrolled={scrolled}>Our Future</NavItem>
               <NavItem href="/insights" scrolled={scrolled}>Insights</NavItem>
               <NavItem href="/contact" scrolled={scrolled}>Contact</NavItem>
             </nav>
 
             {/* CTA + MOBILE */}
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
 
               {/* CTA */}
 
@@ -98,9 +99,9 @@ export default function Header() {
                 className={`
                 hidden md:inline-flex
                 items-center
-                px-7 py-3
-                text-[11px]
-                tracking-[0.28em]
+                px-6 py-2.5
+                text-[10px]
+                tracking-[0.26em]
                 uppercase
                 rounded-full
                 transition-all
@@ -123,7 +124,7 @@ export default function Header() {
                 onClick={() => setMenuOpen(!menuOpen)}
                 className={`
                 lg:hidden
-                h-11 w-11
+                h-10 w-10
                 rounded-full
                 flex items-center justify-center
                 transition
@@ -134,7 +135,7 @@ export default function Header() {
                 }
                 `}
               >
-                {menuOpen ? <X size={20} /> : <Menu size={20} />}
+                {menuOpen ? <X size={18} /> : <Menu size={18} />}
               </button>
 
             </div>
@@ -152,7 +153,7 @@ export default function Header() {
       {/* MOBILE MENU */}
 
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-emerald-900 text-white flex flex-col justify-center items-center space-y-10 text-lg tracking-[0.25em] uppercase">
+        <div className="fixed inset-0 z-40 bg-emerald-900 text-white flex flex-col justify-center items-center space-y-8 text-base tracking-[0.22em] uppercase">
 
           <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
 
@@ -163,6 +164,8 @@ export default function Header() {
           <Link href="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
 
           <Link href="/impact" onClick={() => setMenuOpen(false)}>Impact</Link>
+
+          <Link href="/future" onClick={() => setMenuOpen(false)}>Our Future</Link>
 
           <Link href="/insights" onClick={() => setMenuOpen(false)}>Insights</Link>
 
@@ -177,13 +180,13 @@ export default function Header() {
             }}
             className="
             mt-6
-            px-8
-            py-4
+            px-7
+            py-3
             rounded-full
             bg-green-500
             text-white
-            text-[11px]
-            tracking-[0.3em]
+            text-[10px]
+            tracking-[0.28em]
             font-medium
             hover:bg-green-600
             transition
@@ -217,8 +220,8 @@ function NavItem({
       href={href}
       className={`
       relative
-      text-[11px]
-      tracking-[0.32em]
+      text-[10px]
+      tracking-[0.28em]
       uppercase
       font-medium
       transition

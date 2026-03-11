@@ -10,6 +10,7 @@ import History from "./components/home/history";
 import Calculator from "./components/home/calculator";
 import Info from "./components/home/info";
 import Insight from "./components/home/insights";
+import Carbon from "./components/home/carbon";
 
 
 
@@ -91,6 +92,7 @@ export default function Home() {
 
       {/* Core hero & positioning */}
       <Hero />
+        <Carbon />
       <About />
 
       {/* Platform / WhatsApp / AI section */}
