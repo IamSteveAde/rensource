@@ -62,12 +62,12 @@ bio: "Andreas Svoor is an electrical engineer and renewable energy entrepreneur 
 },
 {
 name: "Femi Adesanya",
-role: "Director",
+role: "CEO",
 image: "/images/board/femi.png",
 bio: "Femi Adesanya is the Chief Executive Officer of Rensource Energy with over 15 years of experience across energy and infrastructure sectors."
 },
 {
-name: "Mr. Manny Pogoson",
+name: "Mr. Emmanuel Pogoson",
 role: "Director",
 image: "/images/hero/manny.jpeg",
 bio: "Mr. Manny Pogoson is a Director at Rensource Energy with over 15 years of experience across energy and infrastructure sectors."
