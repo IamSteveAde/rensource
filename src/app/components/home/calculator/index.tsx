@@ -21,7 +21,7 @@ bio: "Mr. Chikezie Nwosu is a distinguished executive with over 34 years of expe
 {
 name: "Dayo Omolokun",
 role: "Vice Chairman",
-image: "/images/board/dele.jpg",
+image: "/images/hero/vp.jpeg",
 bio: "Dayo Omolokun is an international finance executive with over 30 years of experience across Africa, the Middle East and the United Kingdom."
 },
 {
@@ -69,8 +69,8 @@ bio: "Femi Adesanya is the Chief Executive Officer of Rensource Energy with over
 {
 name: "Mr. Emmanuel Pogoson",
 role: "Director",
-image: "/images/hero/manny.jpeg",
-bio: "Mr. Manny Pogoson is a Director at Rensource Energy with over 15 years of experience across energy and infrastructure sectors."
+image: "/images/board/emma.png",
+bio: "Emma Pogoson is an operational delivery and transformation expert with a career spanning three decades in Mobile telecommunications. He has participated in multiple programmes delivering modernization and roll out services into UK’s major networks and served as a subject matter expert in digitization of supplier services within a global transformation programme for Ericsson. He has a flair for combining deep creativity, technical expertise, with strategic clarity in governance, and a focus on long-term value creation. Mr Pogoson holds a Stirling University Scotland Master’s degree in Innovation, Commercialisation, and Entrepreneurship, and a degree in Electrical and Electronic Engineering from the University of Benin, Nigeria. He is also a 2006 recipient of the Stirling University Research Enterprise Award for Innovation for a creative concept - The EcoGym.  A six-sigma practitioner, Emmanuel maintains multiple certifications which reflect his commitment to innovation, modernization and industry best practice. "
 }
 
 ]
