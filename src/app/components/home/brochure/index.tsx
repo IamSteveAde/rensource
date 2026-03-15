@@ -1,9 +1,8 @@
 "use client"
 
 import { ArrowDown, FileText } from "lucide-react"
-import Link from "next/link"
 
-export default function BusinessPlanCTA(){
+export default function BrochureCTA(){
 
 return(
 
@@ -52,15 +51,15 @@ return(
 <div>
 
 <h2 className="text-4xl md:text-5xl font-semibold bg-gradient-to-r from-emerald-500 to-green-700 bg-clip-text text-transparent">
-Download Our Business Plan
+Download Our Company Brochure
 </h2>
 
 <p className="mt-6 text-gray-600 leading-relaxed max-w-lg">
-Explore our strategic roadmap, infrastructure expansion plans, and long-term vision for powering decentralized energy infrastructure across Africa.
+Discover our vision, projects, and the innovative solutions driving decentralized energy infrastructure across Africa.
 </p>
 
 <p className="mt-4 text-gray-600 leading-relaxed max-w-lg">
-The business plan outlines our growth strategy, investment opportunities, and the impact we aim to create in emerging energy markets.
+Our brochure provides an overview of our company, capabilities, strategic focus, and the impact we are creating in emerging energy markets.
 </p>
 
 
@@ -69,12 +68,12 @@ The business plan outlines our growth strategy, investment opportunities, and th
 <div className="mt-10">
 
 <a
-href="/data/Rensource Business Plan.pdf"
+href="/data/Rensource Brochure.pdf"
 download
 className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white px-10 py-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition duration-300"
 >
 
-Download Business Plan
+Download Brochure
 
 <ArrowDown className="w-5 h-5"/>
 
@@ -96,7 +95,7 @@ Download Business Plan
 </div>
 
 <h3 className="font-semibold text-gray-900 text-lg">
-Company Business Plan
+Company Brochure
 </h3>
 
 <p className="text-sm text-gray-500 mt-2">
@@ -108,7 +107,7 @@ PDF Document
 </div>
 
 <p className="text-xs text-gray-400 mt-3">
-Strategic Roadmap & Investment Outlook
+Company Overview & Capabilities
 </p>
 
 </div>
