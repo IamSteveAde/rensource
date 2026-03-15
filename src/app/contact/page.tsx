@@ -201,16 +201,22 @@ Submit Inquiry
 Our Global Offices
 </h2>
 
-<div className="grid md:grid-cols-2 gap-10 justify-center max-w-4xl mx-auto">
+<div className="grid md:grid-cols-3 gap-10 justify-center max-w-6xl mx-auto">
 
 <LocationCard
 city="Lagos"
-address="Victoria Island, Lagos Nigeria"
+address="Zulikat Wuraola House , fifth floor, 362 Herbert Macaulay way, Yaba"
 />
 
 <LocationCard
 city="Abuja"
-address="Central Business District Abuja"
+address="No.5 Ellicott citi Street, 
+FCDA Extension III, F 01 Abuja"
+/>
+
+<LocationCard
+city="Abeokuta"
+address="No. 10, Ishola Abudu Close, Ibara Housing Estate, Abeokuta, Ogun State"
 />
 
 </div>

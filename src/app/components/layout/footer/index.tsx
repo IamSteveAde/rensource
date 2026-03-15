@@ -130,25 +130,25 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-white/70">
 
               <li>
-                <Link href="/solutions/solar" className="hover:text-white transition">
+                <Link href="/solutions" className="hover:text-white transition">
                   Solar Systems
                 </Link>
               </li>
 
               <li>
-                <Link href="/solutions/hybrid" className="hover:text-white transition">
+                <Link href="/solutions" className="hover:text-white transition">
                   Hybrid Power
                 </Link>
               </li>
 
               <li>
-                <Link href="/solutions/bess" className="hover:text-white transition">
+                <Link href="/solutions" className="hover:text-white transition">
                   Solar + BESS
                 </Link>
               </li>
 
               <li>
-                <Link href="/solutions/ppa" className="hover:text-white transition">
+                <Link href="/solutions" className="hover:text-white transition">
                   Power Purchase Agreements
                 </Link>
               </li>
@@ -172,10 +172,7 @@ export default function Footer() {
                 </span>
               </div>
 
-              <div className="flex gap-3">
-                <Phone size={16} className="mt-1 text-[#D4A13E]" />
-                <span>+234 XXX XXX XXXX</span>
-              </div>
+              
 
               <div className="flex gap-3">
                 <Mail size={16} className="mt-1 text-[#D4A13E]" />
