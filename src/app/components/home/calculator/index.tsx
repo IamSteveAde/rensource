@@ -33,37 +33,37 @@ bio: "Solabomi Adedeji is a Partner at Platform Capital Investment Partners with
 {
 name: "Nojeem Jimoh",
 role: "Director",
-image: "/images/board/musmen.jpeg",
+image: "/images/board/musmens.png",
 bio: "Nojeem Jimoh is a senior executive with experience spanning the UK public housing sector and Nigeria’s downstream oil and gas industry."
 },
 {
 name: "Dele Olawuyi",
 role: "Director",
-image: "/images/board/dele.png",
+image: "/images/board/deles.png",
 bio: "Dele Olawuyi is a technology entrepreneur and strategic advisor with over 25 years of experience building and scaling ventures."
 },
 {
 name: "Suleiman Amina Ka’oje",
 role: "Director",
-image: "/images/board/nasi.png",
+image: "/images/board/nasis.png",
 bio: "Suleiman Amina Ka’oje is a senior legal professional with over 15 years of experience in litigation and public prosecution."
 },
 {
 name: "Uche Chiwetalu",
 role: "Director",
-image: "/images/board/uche.png",
+image: "/images/board/uches.png",
 bio: "Uche Chiwetalu is a Nigerian legal practitioner specializing in corporate law and regulatory advisory."
 },
 {
 name: "Eng. Andreas Svoor",
 role: "Director",
-image: "/images/board/svoor.png",
+image: "/images/board/svoors.png",
 bio: "Andreas Svoor is an electrical engineer and renewable energy entrepreneur dedicated to transforming Africa’s energy landscape."
 },
 {
 name: "Femi Adesanya",
 role: "CEO",
-image: "/images/board/femi.png",
+image: "/images/board/femis.png",
 bio: "Femi Adesanya is the Chief Executive Officer of Rensource Energy with over 15 years of experience across energy and infrastructure sectors."
 },
 {
