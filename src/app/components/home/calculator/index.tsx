@@ -1,306 +1,235 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
-import { ChevronLeft, ChevronRight, ArrowUpRight, X } from "lucide-react"
+import { motion } from "framer-motion"
 
-type Member = {
-  name: string
-  role: string
-  image: string
-  bio: string
-}
+export default function EnergyImpactCalculators(){
 
-const members: Member[] = [
-{
-name: "Mr. Chikezie Nwosu",
-role: "Board Chairman",
-image: "/images/board/nwosu.jpg",
-bio: "Mr. Chikezie Nwosu is a distinguished executive with over 34 years of experience across the global energy sector. His expertise spans upstream oil & gas development, midstream infrastructure and downstream operations, with increasing focus on renewable energy transition."
-},
-{
-name: "Dayo Omolokun",
-role: "Vice Chairman",
-image: "/images/hero/vp.jpeg",
-bio: "Dayo Omolokun is an international finance executive with over 30 years of experience across Africa, the Middle East and the United Kingdom."
-},
-{
-name: "Solabomi Adedeji",
-role: "Director",
-image: "/images/board/sala.jpg",
-bio: "Solabomi Adedeji is a Partner at Platform Capital Investment Partners with over 28 years of experience in strategic transformation and investment banking."
-},
-{
-name: "Nojeem Jimoh",
-role: "Director",
-image: "/images/board/musmens.png",
-bio: "Nojeem Jimoh is a senior executive with experience spanning the UK public housing sector and Nigeria’s downstream oil and gas industry."
-},
-{
-name: "Dele Olawuyi",
-role: "Director",
-image: "/images/board/deles.png",
-bio: "Dele Olawuyi is a technology entrepreneur and strategic advisor with over 25 years of experience building and scaling ventures."
-},
-{
-name: "Suleiman Amina Ka’oje",
-role: "Director",
-image: "/images/board/nasis.png",
-bio: "Suleiman Amina Ka’oje is a senior legal professional with over 15 years of experience in litigation and public prosecution."
-},
-{
-name: "Uche Chiwetalu",
-role: "Director",
-image: "/images/board/uches.png",
-bio: "Uche Chiwetalu is a Nigerian legal practitioner specializing in corporate law and regulatory advisory."
-},
-{
-name: "Eng. Andreas Svoor",
-role: "Director",
-image: "/images/board/svoors.png",
-bio: "Andreas Svoor is an electrical engineer and renewable energy entrepreneur dedicated to transforming Africa’s energy landscape."
-},
-{
-name: "Femi Adesanya",
-role: "CEO",
-image: "/images/board/femis.png",
-bio: "Femi Adesanya is the Chief Executive Officer of Rensource Energy with over 15 years of experience across energy and infrastructure sectors."
-},
-{
-name: "Mr. Emmanuel Pogoson",
-role: "Director",
-image: "/images/board/emma.png",
-bio: "Emma Pogoson is an operational delivery and transformation expert with a career spanning three decades in Mobile telecommunications. He has participated in multiple programmes delivering modernization and roll out services into UK’s major networks and served as a subject matter expert in digitization of supplier services within a global transformation programme for Ericsson. He has a flair for combining deep creativity, technical expertise, with strategic clarity in governance, and a focus on long-term value creation. Mr Pogoson holds a Stirling University Scotland Master’s degree in Innovation, Commercialisation, and Entrepreneurship, and a degree in Electrical and Electronic Engineering from the University of Benin, Nigeria. He is also a 2006 recipient of the Stirling University Research Enterprise Award for Innovation for a creative concept - The EcoGym.  A six-sigma practitioner, Emmanuel maintains multiple certifications which reflect his commitment to innovation, modernization and industry best practice. "
-}
+const [tab,setTab]=useState("emissions")
+const [dieselSpend,setDieselSpend]=useState(2000)
 
-]
+/* CONSTANTS */
 
-export default function Leadership(){
+const dieselPrice=1.2
+const co2PerLiter=2.68
 
-const [active,setActive] = useState<Member | null>(null)
-const [index,setIndex] = useState(0)
+/* CALCULATIONS */
 
-const next = () => {
-if(index < members.length-1) setIndex(index+1)
-}
+const dieselLiters=dieselSpend/dieselPrice
+const monthlyCO2=dieselLiters*co2PerLiter
+const yearlyCO2=monthlyCO2*12
+const carbonReduction=yearlyCO2*0.7
 
-const prev = () => {
-if(index > 0) setIndex(index-1)
-}
+const monthlySavings=dieselSpend*0.35
+const yearlySavings=monthlySavings*12
+const tenYearSavings=yearlySavings*10
+
+const trees=Math.round(yearlyCO2/21)
+const cars=Math.round(yearlyCO2/4600)
 
 return(
 
 <section className="relative py-32 px-6 overflow-hidden bg-white">
 
-{/* animated gradient circles */}
+{/* BACKGROUND */}
 
-<div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-gradient-to-r from-green-400/30 to-emerald-500/20 rounded-full blur-3xl animate-pulse"/>
+<div className="absolute inset-0 bg-gradient-to-b from-emerald-50 via-white to-white"/>
 
-<div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-r from-emerald-300/30 to-green-500/20 rounded-full blur-3xl animate-pulse"/>
+{/* ORBITS */}
 
-<div className="absolute top-1/3 right-1/4 w-[250px] h-[250px] bg-gradient-to-r from-green-200/40 to-emerald-300/20 rounded-full blur-3xl animate-pulse"/>
+<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
 
+<div className="absolute w-[900px] h-[900px] border border-emerald-200/40 rounded-full animate-[spin_120s_linear_infinite]">
+<div className="absolute -top-2 left-1/2 w-3 h-3 bg-emerald-500 rounded-full"/>
+</div>
 
-<div className="max-w-7xl mx-auto relative">
+<div className="absolute w-[600px] h-[600px] border border-green-200/40 rounded-full animate-[spin_90s_linear_infinite_reverse]">
+<div className="absolute -top-2 left-1/2 w-2.5 h-2.5 bg-green-500 rounded-full"/>
+</div>
 
-{/* header */}
+<div className="absolute w-[350px] h-[350px] border border-emerald-200/40 rounded-full animate-[spin_60s_linear_infinite]">
+<div className="absolute -top-2 left-1/2 w-2 h-2 bg-emerald-600 rounded-full"/>
+</div>
 
-<div className="text-center">
+</div>
 
-<h2 className="text-5xl md:text-6xl font-semibold bg-gradient-to-r from-emerald-500 to-green-700 bg-clip-text text-transparent">
-Leadership
+<div className="max-w-5xl mx-auto relative">
+
+{/* HEADER */}
+
+<div className="text-center mb-14">
+
+<h2 className="text-4xl md:text-5xl font-semibold bg-gradient-to-r from-emerald-500 to-green-700 bg-clip-text text-transparent">
+Energy Impact Calculator
 </h2>
 
-<p className="mt-5 text-gray-600 max-w-xl mx-auto">
-Experienced leadership guiding the future of sustainable energy infrastructure across Africa.
+<p className="mt-4 text-gray-600 max-w-xl mx-auto">
+Understand your diesel emissions and discover the financial and
+environmental benefits of switching to solar energy.
 </p>
 
 </div>
 
-{/* desktop grid */}
+{/* TABS */}
 
-<div className="hidden md:grid md:grid-cols-3 gap-10 mt-24">
+<div className="flex justify-center mb-10">
 
-{members.map((member,i)=>(
-
-<div
-key={i}
-onClick={()=>setActive(member)}
-className="group relative cursor-pointer"
->
-
-{/* glow */}
-
-<div className="absolute -inset-0.5 bg-gradient-to-r from-green-400 via-emerald-400 to-green-600 opacity-0 group-hover:opacity-100 blur-xl transition duration-700"/>
-
-{/* card */}
-
-<div className="relative bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100">
-
-{/* image */}
-
-<div className="relative h-[360px] overflow-hidden">
-
-<Image
-src={member.image}
-alt={member.name}
-fill
-className="object-cover group-hover:scale-110 transition duration-700"
-/>
-
-<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"/>
-
-</div>
-
-{/* content */}
-
-<div className="p-6">
-
-<h3 className="text-lg font-semibold text-gray-900">
-{member.name}
-</h3>
-
-<p className="text-sm text-emerald-600 font-medium mt-1">
-{member.role}
-</p>
-
-<div className="flex items-center gap-2 mt-4 text-sm text-gray-500 group-hover:text-emerald-600 transition">
-
-<span>View Profile</span>
-
-<ArrowUpRight size={16}/>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-))}
-
-</div>
-
-
-{/* mobile slider */}
-
-<div className="md:hidden mt-16">
-
-<div className="flex justify-center gap-4 mb-6">
+<div className="bg-gray-100 rounded-full p-1 flex">
 
 <button
-onClick={prev}
-className="w-11 h-11 flex items-center justify-center rounded-full bg-white shadow border"
+onClick={()=>setTab("emissions")}
+className={`px-6 py-2 rounded-full text-sm font-medium transition
+${tab==="emissions"?"bg-emerald-600 text-white":"text-gray-600"}`}
 >
-<ChevronLeft size={20}/>
+Emissions Calculator
 </button>
 
 <button
-onClick={next}
-className="w-11 h-11 flex items-center justify-center rounded-full bg-white shadow border"
+onClick={()=>setTab("savings")}
+className={`px-6 py-2 rounded-full text-sm font-medium transition
+${tab==="savings"?"bg-emerald-600 text-white":"text-gray-600"}`}
 >
-<ChevronRight size={20}/>
+Carbon Savings
 </button>
 
 </div>
 
-<div className="overflow-hidden">
+</div>
 
-<div
-className="flex transition-transform duration-500"
-style={{ transform:`translateX(-${index*100}%)`}}
->
+{/* CARD */}
 
-{members.map((member,i)=>(
+<div className="bg-white/80 backdrop-blur-xl border border-emerald-100 shadow-[0_30px_80px_rgba(0,0,0,0.08)] rounded-3xl p-8 md:p-12">
 
-<div key={i} className="min-w-full px-3">
+{/* SLIDER */}
 
-<div
-onClick={()=>setActive(member)}
-className="bg-white rounded-3xl overflow-hidden shadow-xl"
->
+<div className="mb-10">
 
-<div className="relative h-[360px]">
+<label className="text-sm text-gray-600">
+Monthly Diesel Spend
+</label>
 
-<Image
-src={member.image}
-alt={member.name}
-fill
-className="object-cover"
+{/* VALUE DISPLAY */}
+
+<div className="mt-2 mb-3 text-3xl font-semibold text-emerald-700">
+${dieselSpend.toLocaleString()}
+</div>
+
+<input
+type="range"
+min="500"
+max="20000"
+step="100"
+value={dieselSpend}
+onChange={(e)=>setDieselSpend(Number(e.target.value))}
+className="w-full accent-emerald-600"
 />
 
-<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"/>
-
-</div>
-
-<div className="p-6">
-
-<h3 className="font-semibold text-gray-900">
-{member.name}
-</h3>
-
-<p className="text-sm text-emerald-600">
-{member.role}
-</p>
-
+<div className="flex justify-between text-xs text-gray-500 mt-2">
+<span>$500</span>
+<span>$20,000</span>
 </div>
 
 </div>
+{/* TAB CONTENT */}
 
-</div>
+{tab==="emissions" &&(
 
-))}
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-{/* modal */}
-
-{active && (
-
-<div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-
-<div className="bg-white w-full max-w-xl max-h-[90vh] rounded-3xl p-6 md:p-8 relative shadow-2xl overflow-y-auto">
-
-<button
-onClick={()=>setActive(null)}
-className="absolute top-4 right-4 text-gray-400 hover:text-gray-700"
+<motion.div
+initial={{opacity:0}}
+animate={{opacity:1}}
+className="grid md:grid-cols-4 gap-6"
 >
-<X/>
-</button>
 
-<Image
-src={active.image}
-alt={active.name}
-width={220}
-height={220}
-className="rounded-xl mb-6 w-full max-w-[220px]"
-/>
+<div className="bg-emerald-50 p-6 rounded-xl">
 
-<h3 className="text-xl md:text-2xl font-semibold">
-{active.name}
-</h3>
+<p className="text-xs text-gray-500">Monthly CO₂ Emissions</p>
 
-<p className="text-emerald-600 text-sm font-medium mb-4">
-{active.role}
-</p>
-
-<p className="text-gray-700 leading-relaxed text-sm md:text-base">
-{active.bio}
+<p className="text-2xl font-bold text-gray-900 mt-1">
+{Math.round(monthlyCO2).toLocaleString()} kg
 </p>
 
 </div>
 
+<div className="bg-emerald-600 text-white p-6 rounded-xl">
+
+<p className="text-xs text-white/70">Yearly CO₂ Emissions</p>
+
+<p className="text-2xl font-bold mt-1">
+{Math.round(yearlyCO2/1000)} tons
+</p>
+
 </div>
+
+<div className="bg-green-50 p-6 rounded-xl">
+
+<p className="text-xs text-gray-500">Trees Equivalent</p>
+
+<p className="text-2xl font-bold text-green-700 mt-1">
+{trees}
+</p>
+
+</div>
+
+<div className="bg-green-50 p-6 rounded-xl">
+
+<p className="text-xs text-gray-500">Cars Removed</p>
+
+<p className="text-2xl font-bold text-green-700 mt-1">
+{cars}
+</p>
+
+</div>
+
+</motion.div>
 
 )}
+
+{tab==="savings" &&(
+
+<motion.div
+initial={{opacity:0}}
+animate={{opacity:1}}
+className="grid md:grid-cols-3 gap-6"
+>
+
+<div className="bg-emerald-50 p-6 rounded-xl">
+
+<p className="text-xs text-gray-500">Monthly Savings</p>
+
+<p className="text-2xl font-bold text-gray-900 mt-1">
+${Math.round(monthlySavings).toLocaleString()}
+</p>
+
+</div>
+
+<div className="bg-emerald-600 text-white p-6 rounded-xl">
+
+<p className="text-xs text-white/70">Annual Savings</p>
+
+<p className="text-2xl font-bold mt-1">
+${Math.round(yearlySavings).toLocaleString()}
+</p>
+
+</div>
+
+<div className="bg-green-50 p-6 rounded-xl">
+
+<p className="text-xs text-gray-500">10 Year Savings</p>
+
+<p className="text-2xl font-bold text-green-700 mt-1">
+${Math.round(tenYearSavings).toLocaleString()}
+</p>
+
+</div>
+
+</motion.div>
+
+)}
+
+</div>
+
+</div>
+
 </section>
 
 )

@@ -3,12 +3,12 @@ import { Metadata } from "next";
 // Home sections
 import Hero from "./components/home/hero";
 import About from "./components/home/about";
-import DiscoverProperties from "./components/home/property-option"; // mentor / platform section
-import Listing from "./components/home/property-list";
+import DiscoverProperties from "./components/home/projects"; // mentor / platform section
+import Listing from "./components/home/impact";
 import Testimonials from "./components/home/testimonial";
-import History from "./components/home/history";
-import Calculator from "./components/home/calculator";
-import Info from "./components/home/info";
+import History from "./components/home/testimonials";
+import Calculator from "./components/home/leadership";
+import Info from "./components/home/calculator";
 import Plan from "./components/home/brochure";
 import Insight from "./components/home/insights";
 import Carbon from "./components/home/carbon";

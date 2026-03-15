@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import Board from "../components/home/calculator"
+import Board from "../components/home/leadership"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 
