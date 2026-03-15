@@ -265,13 +265,13 @@ className="object-cover"
 
 {active && (
 
-<div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-6">
+<div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
 
-<div className="bg-white max-w-xl w-full rounded-3xl p-8 relative shadow-2xl">
+<div className="bg-white w-full max-w-xl max-h-[90vh] rounded-3xl p-6 md:p-8 relative shadow-2xl overflow-y-auto">
 
 <button
 onClick={()=>setActive(null)}
-className="absolute top-5 right-5 text-gray-400 hover:text-gray-700"
+className="absolute top-4 right-4 text-gray-400 hover:text-gray-700"
 >
 <X/>
 </button>
@@ -281,10 +281,10 @@ src={active.image}
 alt={active.name}
 width={220}
 height={220}
-className="rounded-xl mb-6"
+className="rounded-xl mb-6 w-full max-w-[220px]"
 />
 
-<h3 className="text-2xl font-semibold">
+<h3 className="text-xl md:text-2xl font-semibold">
 {active.name}
 </h3>
 
@@ -292,7 +292,7 @@ className="rounded-xl mb-6"
 {active.role}
 </p>
 
-<p className="text-gray-700 leading-relaxed">
+<p className="text-gray-700 leading-relaxed text-sm md:text-base">
 {active.bio}
 </p>
 
@@ -301,7 +301,6 @@ className="rounded-xl mb-6"
 </div>
 
 )}
-
 </section>
 
 )
