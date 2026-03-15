@@ -5,7 +5,7 @@ import Hero from "./components/home/hero";
 import About from "./components/home/about";
 import DiscoverProperties from "./components/home/projects"; // mentor / platform section
 import Listing from "./components/home/impact";
-import Testimonials from "./components/home/testimonial";
+import Testimonials from "./components/home/africa";
 import History from "./components/home/testimonials";
 import Calculator from "./components/home/leadership";
 import Info from "./components/home/calculator";
